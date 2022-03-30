@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ic_drama"
+        android:icon="@drawable/ic_drama"
+        android:title="@string/drama"/>
+
+    <item
+        android:id="@+id/ic_film"
+        android:icon="@drawable/ic_film"
+        android:title="@string/film"/>
+
+    <item
+        android:id="@+id/ic_my_list"
+        android:icon="@drawable/ic_my_list"
+        android:title="@string/my_list"/>
+
+    <item
+        android:id="@+id/ic_my_account"
+        android:icon="@drawable/ic_my_account"
+        android:title="@string/my_account"/>
+
+</menu>
