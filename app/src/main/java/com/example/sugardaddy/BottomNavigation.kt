@@ -5,9 +5,11 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
 import com.example.sugardaddy.BottomNavigationFragment.DramaFragment
 import com.example.sugardaddy.BottomNavigationFragment.FilmFragment
@@ -40,15 +42,19 @@ class BottomNavigation : AppCompatActivity() {
             when (it.itemId) {
                 R.id.ic_drama -> {
                     currentFragment(dramaFragment)
+                    binding.searchView.visibility = View.VISIBLE
                 }
                 R.id.ic_film -> {
                     currentFragment(filmFragment)
+                    binding.searchView.visibility = View.VISIBLE
                 }
                 R.id.ic_my_list -> {
                     currentFragment(myListFragment)
+                    binding.searchView.visibility = View.GONE
                 }
                 R.id.ic_my_account -> {
                     currentFragment(myAccountFragment)
+                    binding.searchView.visibility = View.GONE
                 }
             }
             true
