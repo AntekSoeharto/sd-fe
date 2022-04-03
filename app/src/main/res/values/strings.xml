@@ -11,8 +11,60 @@
     <string name="film">Film</string>
     <string name="my_list">My List</string>
     <string name="my_account">My Account</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="new_password">New Password</string>
+
+    <string name="drama_name">Judul Drama</string>
+    <string name="drama_description">Deskripsi</string>
+    <string name="name_t_t_t_t_t_t">Name \t\t\t\t\t\t:</string>
+    <string name="andreas_jumaga">Andreas Jumaga</string>
+    <string name="username_t_t_t">Username\t\t\t:</string>
+    <string name="andreasjm">andreasjm</string>
+    <string name="email_t_t_t_t_t_t">Email \t\t\t\t\t\t:</string>
+    <string name="andreasjumaga_gmail_com">andreasjumaga@gmail.com</string>
+    <string name="gender_t_t_t_t_t_t">Gender\t\t\t\t\t\t:</string>
+    <string name="pria">pria</string>
+    <string name="birth_of_date_t">Birth of Date\t:</string>
+    <string name="_29_febuary_2000">29 Febuary 2000</string>
+    <string name="handphone_t_t">Handphone\t\t:</string>
+    <string name="_08676786860">08676786860</string>
+    <string name="change_password">Change Password</string>
+    <string name="save">SAVE</string>
+
+    <string-array name="data_name_drama">
+        <item>Twenty-Five Twenty-One</item>
+        <item>Ghost Doctor</item>
+        <item>Forecasting Love and Weather</item>
+        <item>Tracer</item>
+        <item>Moonshine</item>
+        <item>Artificial City</item>
+        <item>The One and Only</item>
+        <item>Bulgasal: Immortal Souls</item>
+        <item>Young Lady and Gentleman</item>
+    </string-array>
+
+    <string-array name="data_drama_description">
+        <item>Twenty-Five Twenty-One merupakan drama yang mengisahkan perjalanan panjang lima karakternya selama 23 tahun dari 1998 sampai 2021. </item>
+        <item>Ghost Doctor berkisah tentang dua dokter dari latar belakang ekstrem, yang sangat bertolak belakang,</item>
+        <item>Forecasting Love and Weather berkisah tentang Jin Ha-kyung, peramal umum Divisi 2 Administrasi Meteorologi Korea (KMA) </item>
+        <item>Moonshine merupakan drama Korea yang mengisahkan sejarah larangan alkohol pada era Joseon. </item>
+        <item>Drama ini berawal dari museum seni milik Sung Jin Group, konglomerat besar yang memegang kendali dunia </item>
+        <item>The One and Only merupakan drama Korea terbaru JTBC yang mengisahkan tiga perempuan yang punya masalah </item>
+        <item>Bulgasal: Immortal Souls mengangkat cerita tentang makhluk mitos abadi bernama Dan Hwal (Lee Jin-wook). </item>
+        <item>Sejak pertama kali tayang pada September 2021 lalu, drama Korea Young Lady and Gentleman sudah mendapatkan kritik pedas dari berbagai pihak. r</item>
+        <item>abc</item>
+    </string-array>
+
+    <integer-array name="data_drama_photo">
+        <item>@drawable/drama_satu</item>
+        <item>@drawable/drama_dua</item>
+        <item>@drawable/drama_tiga</item>
+        <item>@drawable/drama_empat</item>
+        <item>@drawable/drama_lima</item>
+        <item>@drawable/drama_enam</item>
+        <item>@drawable/drama_tujuh</item>
+        <item>@drawable/drama_delapan</item>
+        <item>@drawable/drama_sembilan</item>
+    </integer-array>
 </resources>

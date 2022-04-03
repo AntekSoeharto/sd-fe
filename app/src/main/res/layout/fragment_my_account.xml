@@ -24,7 +24,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
-                    android:text="Name \t\t\t\t\t\t:"
+                    android:text="@string/name_t_t_t_t_t_t"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
-                    android:text="Andreas Jumaga"
+                    android:text="@string/andreas_jumaga"
                     android:textColor="@color/black"/>
             </LinearLayout>
 
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
-                    android:text="Username\t\t\t:"
+                    android:text="@string/username_t_t_t"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
-                    android:text="andreasjm"
+                    android:text="@string/andreasjm"
                     android:textColor="@color/black"/>
             </LinearLayout>
 
@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
-                    android:text="Email \t\t\t\t\t\t:"
+                    android:text="@string/email_t_t_t_t_t_t"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
-                    android:text="andreasjumaga@gmail.com"
+                    android:text="@string/andreasjumaga_gmail_com"
                     android:textColor="@color/black"/>
 
             </LinearLayout>
@@ -91,15 +91,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
-                    android:text="Gender\t\t\t\t\t\t:"
+                    android:text="@string/gender_t_t_t_t_t_t"
                     android:textColor="@color/black"/>
 
                 <TextView
+                    android:id="@+id/tv_gender"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
-                    android:text="pria"
+                    android:text="@string/pria"
                     android:textColor="@color/black"/>
             </LinearLayout>
 
@@ -112,15 +113,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
-                    android:text="Birth of Date\t:"
+                    android:text="@string/birth_of_date_t"
                     android:textColor="@color/black"/>
 
                 <TextView
+                    android:id="@+id/tv_birth_of_date"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
-                    android:text="29 Febuary 2000"
+                    android:text="@string/_29_febuary_2000"
                     android:textColor="@color/black"/>
             </LinearLayout>
 
@@ -133,15 +135,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
-                    android:text="Handphone\t\t:"
+                    android:text="@string/handphone_t_t"
                     android:textColor="@color/black"/>
 
                 <TextView
+                    android:id="@+id/tv_no_tlpn"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
-                    android:text="08676786860"
+                    android:text="@string/_08676786860"
                     android:textColor="@color/black"/>
             </LinearLayout>
 
@@ -149,8 +152,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="30dp"
-                android:text="Change Password"
+                android:textSize="30sp"
+                android:text="@string/change_password"
                 android:layout_marginTop="20dp"
                 android:padding="5dp"
                 android:textColor="@color/black"
@@ -184,7 +187,7 @@
                 android:id="@+id/btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:text="SAVE"
+                android:text="@string/save"
                 android:textSize="20sp"
                 android:textColor="#000000"
                 android:layout_margin="10dp"/>
