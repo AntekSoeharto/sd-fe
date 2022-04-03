@@ -5,56 +5,48 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.sugardaddy.Drama
+import com.example.sugardaddy.ListDramaAdapter
 import com.example.sugardaddy.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class DramaFragment : Fragment(){
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DramaFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class DramaFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var tvDramas: RecyclerView
+    private val list = ArrayList<Drama>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_drama, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DramaFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DramaFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        tvDramas = view.findViewById(R.id.tv_recommended_drama)
+        tvDramas.setHasFixedSize(true)
+
+        list.addAll(listDramas)
+        showRecyclerList()
+    }
+
+    private val listDramas: ArrayList<Drama>
+        get() {
+            val dataName = resources.getStringArray(R.array.data_name_drama)
+            val dataDescription = resources.getStringArray(R.array.data_drama_description)
+            val dataPhoto = resources.obtainTypedArray(R.array.data_drama_photo)
+            val listDrama = ArrayList<Drama>()
+            for (i in dataName.indices) {
+                val drama = Drama(dataName[i],dataDescription[i], dataPhoto.getResourceId(i, -1))
+                listDrama.add(drama)
             }
+            return listDrama
+        }
+
+    private fun showRecyclerList() {
+        tvDramas.layoutManager = LinearLayoutManager(activity)
+        val listDramaAdapter = ListDramaAdapter(list)
+        tvDramas.adapter = listDramaAdapter
     }
 }
