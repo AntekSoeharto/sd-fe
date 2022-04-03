@@ -5,16 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sugardaddy.Adapter.DramaHotAdapter
+import com.example.sugardaddy.Adapter.DramaRecommendedAdapter
 import com.example.sugardaddy.Drama
-import com.example.sugardaddy.ListDramaAdapter
 import com.example.sugardaddy.R
 
 class DramaFragment : Fragment(){
 
-    private lateinit var tvDramas: RecyclerView
+    private lateinit var tvRecommendedDramas: RecyclerView
+    private lateinit var tvHottestDramas: RecyclerView
     private val list = ArrayList<Drama>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -24,8 +25,11 @@ class DramaFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tvDramas = view.findViewById(R.id.tv_recommended_drama)
-        tvDramas.setHasFixedSize(true)
+        tvRecommendedDramas = view.findViewById(R.id.tv_recommended_drama)
+        tvRecommendedDramas.setHasFixedSize(true)
+
+        tvHottestDramas= view.findViewById(R.id.tv_hot_drama)
+        tvHottestDramas.setHasFixedSize(true)
 
         list.addAll(listDramas)
         showRecyclerList()
@@ -45,8 +49,12 @@ class DramaFragment : Fragment(){
         }
 
     private fun showRecyclerList() {
-        tvDramas.layoutManager = LinearLayoutManager(activity)
-        val listDramaAdapter = ListDramaAdapter(list)
-        tvDramas.adapter = listDramaAdapter
+        tvRecommendedDramas.layoutManager = LinearLayoutManager(activity)
+        val DramaRecommendedAdapter = DramaRecommendedAdapter(list)
+        tvRecommendedDramas.adapter = DramaRecommendedAdapter
+
+        tvHottestDramas.layoutManager=LinearLayoutManager(activity)
+        val DramaHotAdapter = DramaHotAdapter(list)
+        tvHottestDramas.adapter = DramaHotAdapter
     }
 }
