@@ -26,6 +26,7 @@
         <entry key="..\:/Users/asus/AndroidStudioProjects/sd-fe/app/src/main/res/layout/fragment_my_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/sd-fe/app/src/main/res/menu/nav_menu.xml" value="0.264" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/sd-fe/app/src/main/res/menu/option_menu.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/activity_bottom_navigation.xml" value="0.1875" />
       </map>
     </option>
   </component>
@@ -34,5 +35,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1875" />
+      </ProjectState>
+    </option>
   </component>
 </project>
