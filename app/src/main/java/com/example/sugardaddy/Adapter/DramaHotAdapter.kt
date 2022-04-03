@@ -1,4 +1,4 @@
-package com.example.sugardaddy
+package com.example.sugardaddy.Adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sugardaddy.Drama
+import com.example.sugardaddy.R
 
-class ListDramaAdapter(private val listDrama: ArrayList<Drama>) : RecyclerView.Adapter<ListDramaAdapter.ListViewHolder>(){
-
+class DramaHotAdapter(private val listDrama: ArrayList<Drama>) : RecyclerView.Adapter<DramaHotAdapter.ListViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_drama, parent, false)
         return ListViewHolder(view)
