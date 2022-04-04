@@ -31,6 +31,8 @@
     <string name="_08676786860">08676786860</string>
     <string name="change_password">Change Password</string>
     <string name="save">SAVE</string>
+    <string name="hottest_drama">Hottest Drama</string>
+    <string name="recommended_drama">Recommended Drama</string>
 
     <string-array name="data_name_drama">
         <item>Twenty-Five Twenty-One</item>
