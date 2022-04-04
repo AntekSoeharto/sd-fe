@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sugardaddy.Film
 import com.example.sugardaddy.R
+import com.squareup.picasso.Picasso
 
 class FilmRecommendedAdapter (private val listFilm: ArrayList<Film>) : RecyclerView.Adapter<FilmRecommendedAdapter.ListViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -17,7 +18,7 @@ class FilmRecommendedAdapter (private val listFilm: ArrayList<Film>) : RecyclerV
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val (name, description, photo) = listFilm[position]
-        holder.imgPhoto.setImageResource(photo)
+        Picasso.get().load(photo).into(holder.imgPhoto)
         holder.tvName.text = name
         holder.tvDescription.text = description
     }

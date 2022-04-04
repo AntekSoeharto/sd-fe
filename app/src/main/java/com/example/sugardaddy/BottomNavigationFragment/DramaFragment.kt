@@ -39,10 +39,10 @@ class DramaFragment : Fragment(){
         get() {
             val dataName = resources.getStringArray(R.array.data_name_drama)
             val dataDescription = resources.getStringArray(R.array.data_drama_description)
-            val dataPhoto = resources.obtainTypedArray(R.array.data_drama_photo)
+            val dataPhoto = resources.getStringArray(R.array.data_drama_photo)
             val listDrama = ArrayList<Drama>()
             for (i in dataName.indices) {
-                val drama = Drama(dataName[i],dataDescription[i], dataPhoto.getResourceId(i, -1))
+                val drama = Drama(dataName[i],dataDescription[i], dataPhoto[i])
                 listDrama.add(drama)
             }
             return listDrama

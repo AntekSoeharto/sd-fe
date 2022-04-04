@@ -35,6 +35,8 @@
     <string name="save">SAVE</string>
     <string name="hottest_drama">Hottest Drama</string>
     <string name="recommended_drama">Recommended Drama</string>
+    <string name="recommended_film">Recommended Film</string>
+    <string name="hottest_film">Hottest Film</string>
 
     <string-array name="data_name_drama">
         <item>Twenty-Five Twenty-One</item>
@@ -60,17 +62,17 @@
         <item>abc</item>
     </string-array>
 
-    <integer-array name="data_drama_photo">
-        <item>@drawable/drama_satu</item>
-        <item>@drawable/drama_dua</item>
-        <item>@drawable/drama_tiga</item>
-        <item>@drawable/drama_empat</item>
-        <item>@drawable/drama_lima</item>
-        <item>@drawable/drama_enam</item>
-        <item>@drawable/drama_tujuh</item>
-        <item>@drawable/drama_delapan</item>
-        <item>@drawable/drama_sembilan</item>
-    </integer-array>
+    <string-array name="data_drama_photo">
+        <item>https://cdns.klimg.com/resized/670x335/p/headline/drakor-twenty-five-twenty-one-dibintang-cc0418.jpg</item>
+        <item>https://akcdn.detik.net.id/visual/2021/05/06/drama-korea-doctor-stranger_169.png?w=650</item>
+        <item>https://asianwiki.com/images/2/27/Forecasting_Love_and_Weather-mp2.jpg</item>
+        <item>https://asianwiki.com/images/6/64/When_Flowers_Bloom_I_Think_of_the_Moon-p1.jpg</item>
+        <item>https://upload.wikimedia.org/wikipedia/en/e/e7/Poster_of_the_Love_Rain.jpg</item>
+        <item>https://akcdn.detik.net.id/api/wm/2022/01/06/drama-the-one-and-only-foto-instagramcomjtbcdrama_169.jpeg</item>
+        <item>https://asianwiki.com/images/7/7a/Bulgasal-_Immortal_Souls-p2.jpg</item>
+        <item>https://asianwiki.com/images/f/fb/Snowdrop_Korean_Drama-p2.jpg</item>
+        <item>https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2021/01/scmc.jpg</item>
+    </string-array>
 
     <string-array name="data_name_film">
         <item>Twenty-Five Twenty-One</item>

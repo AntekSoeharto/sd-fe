@@ -41,10 +41,10 @@ class FilmFragment : Fragment() {
         get() {
             val dataName = resources.getStringArray(R.array.data_name_film)
             val dataDescription = resources.getStringArray(R.array.data_film_description)
-            val dataPhoto = resources.obtainTypedArray(R.array.data_film_photo)
+            val dataPhoto = resources.getStringArray(R.array.data_drama_photo)
             val listFilm = ArrayList<Film>()
             for (i in dataName.indices) {
-                val film = Film(dataName[i],dataDescription[i], dataPhoto.getResourceId(i, -1))
+                val film = Film(dataName[i],dataDescription[i], dataPhoto[i])
                 listFilm.add(film)
             }
             return listFilm
