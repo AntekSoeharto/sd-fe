@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sugardaddy.Drama
+import com.example.sugardaddy.Entity.Drama
 import com.example.sugardaddy.R
+import com.squareup.picasso.Picasso
 
 class DramaRecommendedAdapter (private val listDrama: ArrayList<Drama>) : RecyclerView.Adapter<DramaRecommendedAdapter.ListViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -17,7 +18,7 @@ class DramaRecommendedAdapter (private val listDrama: ArrayList<Drama>) : Recycl
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val (name, description, photo) = listDrama[position]
-        holder.imgPhoto.setImageResource(photo)
+        Picasso.get().load(photo).into(holder.imgPhoto)
         holder.tvName.text = name
         holder.tvDescription.text = description
     }

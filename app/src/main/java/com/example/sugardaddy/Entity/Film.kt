@@ -1,11 +1,11 @@
-package com.example.sugardaddy
+package com.example.sugardaddy.Entity
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Drama(
+data class Film(
     var name: String,
     var description: String,
-    var photo: Int
+    var photo: String
 ) : Parcelable
