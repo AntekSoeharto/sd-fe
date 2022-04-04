@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.sugardaddy.BottomNavigation
 import com.example.sugardaddy.R
 import com.example.sugardaddy.SignInActivity
+import com.example.sugardaddy.SignUpActivity
 
 
 class MyAccountFragment : Fragment(), View.OnClickListener {
@@ -32,9 +33,14 @@ class MyAccountFragment : Fragment(), View.OnClickListener {
         btnLogOut.setOnClickListener(this)
     }
 
-    override fun onClick(v: View?) {
-        val intent = Intent(activity, SignInActivity::class.java)
-        startActivity(intent)
-        (activity as Activity?)!!.overridePendingTransition(0, 0)
+    override fun onClick(v: View) {
+        when(v.id){
+            R.id.btn_logout -> {
+                val intent = Intent(activity, SignInActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+        }
+
     }
 }
