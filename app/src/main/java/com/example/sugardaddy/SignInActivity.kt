@@ -32,6 +32,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_signin ->{
                 if(username.text.toString() == "Valentinus" && password.text.toString() == "12345"){
                     val intent = Intent(this, BottomNavigation::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                 }
             }
