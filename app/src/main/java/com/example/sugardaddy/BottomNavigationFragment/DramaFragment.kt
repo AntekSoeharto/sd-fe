@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sugardaddy.Adapter.DramaHotAdapter
 import com.example.sugardaddy.Adapter.DramaRecommendedAdapter
-import com.example.sugardaddy.Drama
+import com.example.sugardaddy.Entity.Drama
 import com.example.sugardaddy.R
 
 class DramaFragment : Fragment(){
 
-    private lateinit var tvRecommendedDramas: RecyclerView
-    private lateinit var tvHottestDramas: RecyclerView
+    private lateinit var rvRecommendedDramas: RecyclerView
+    private lateinit var rvHottestDramas: RecyclerView
     private val list = ArrayList<Drama>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -25,11 +25,11 @@ class DramaFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tvRecommendedDramas = view.findViewById(R.id.tv_recommended_drama)
-        tvRecommendedDramas.setHasFixedSize(true)
+        rvRecommendedDramas = view.findViewById(R.id.rv_recommended_drama)
+        rvRecommendedDramas.setHasFixedSize(true)
 
-        tvHottestDramas= view.findViewById(R.id.tv_hot_drama)
-        tvHottestDramas.setHasFixedSize(true)
+        rvHottestDramas= view.findViewById(R.id.rv_hot_drama)
+        rvHottestDramas.setHasFixedSize(true)
 
         list.addAll(listDramas)
         showRecyclerList()
@@ -49,12 +49,12 @@ class DramaFragment : Fragment(){
         }
 
     private fun showRecyclerList() {
-        tvRecommendedDramas.layoutManager = LinearLayoutManager(activity)
+        rvRecommendedDramas.layoutManager = LinearLayoutManager(activity)
         val DramaRecommendedAdapter = DramaRecommendedAdapter(list)
-        tvRecommendedDramas.adapter = DramaRecommendedAdapter
+        rvRecommendedDramas.adapter = DramaRecommendedAdapter
 
-        tvHottestDramas.layoutManager=LinearLayoutManager(activity)
+        rvHottestDramas.layoutManager=LinearLayoutManager(activity)
         val DramaHotAdapter = DramaHotAdapter(list)
-        tvHottestDramas.adapter = DramaHotAdapter
+        rvHottestDramas.adapter = DramaHotAdapter
     }
 }

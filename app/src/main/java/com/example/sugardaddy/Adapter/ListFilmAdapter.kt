@@ -6,28 +6,28 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sugardaddy.Entity.Drama
+import com.example.sugardaddy.Entity.Film
 import com.example.sugardaddy.R
 import com.squareup.picasso.Picasso
 
-class DramaHotAdapter(private val listDrama: ArrayList<Drama>) : RecyclerView.Adapter<DramaHotAdapter.ListViewHolder>(){
+class ListFilmAdapter (private val listFilm: ArrayList<Film>) : RecyclerView.Adapter<ListFilmAdapter.ListViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_drama, parent, false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_film, parent, false)
         return ListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (name, description, photo) = listDrama[position]
+        val (name, description, photo) = listFilm[position]
         Picasso.get().load(photo).into(holder.imgPhoto)
         holder.tvName.text = name
         holder.tvDescription.text = description
     }
 
-    override fun getItemCount(): Int = listDrama.size
+    override fun getItemCount(): Int = listFilm.size
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
         var tvName: TextView = itemView.findViewById(R.id.tv_item_title)
-        var tvDescription: TextView = itemView.findViewById(R.id.tv_item_drama_description)
+        var tvDescription: TextView = itemView.findViewById(R.id.tv_item_film_description)
     }
 }
