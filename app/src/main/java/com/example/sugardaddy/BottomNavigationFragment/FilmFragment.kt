@@ -33,6 +33,8 @@ class FilmFragment : Fragment() {
         tvHottestFilms= view.findViewById(R.id.tv_hot_film)
         tvHottestFilms.setHasFixedSize(true)
 
+
+
         list.addAll(listFilms)
         showRecyclerList()
     }
