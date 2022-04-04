@@ -19,6 +19,7 @@
                 android:id="@+id/text_recommended_video"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:fontFamily="@font/artega"
                 android:text="Recommended Drama"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"/>
@@ -34,6 +35,7 @@
 
             <TextView
                 android:id="@+id/text_hottest_drama"
+                android:fontFamily="@font/artega"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Hottest Drama"
