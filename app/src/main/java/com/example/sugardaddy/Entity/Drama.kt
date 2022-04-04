@@ -1,4 +1,4 @@
-package com.example.sugardaddy
+package com.example.sugardaddy.Entity
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

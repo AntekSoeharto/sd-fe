@@ -16,18 +16,19 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/text_recommended_video"
+                android:id="@+id/tv_recommended_video"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/recommended_film"
                 android:textSize="25dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
+                android:fontFamily="@font/artega"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/tv_recommended_film"
+                android:id="@+id/rv_recommended_film"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -36,10 +37,11 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/text_hottest_drama"
+                android:id="@+id/tv_hottest_drama"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/hottest_film"
+                android:fontFamily="@font/artega"
                 android:textSize="25dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -47,7 +49,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/tv_hot_film"
+                android:id="@+id/rv_hot_film"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"

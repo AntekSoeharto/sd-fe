@@ -5,56 +5,73 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.sugardaddy.Adapter.DramaHotAdapter
+import com.example.sugardaddy.Adapter.DramaRecommendedAdapter
+import com.example.sugardaddy.Adapter.ListDramaAdapter
+import com.example.sugardaddy.Adapter.ListFilmAdapter
+import com.example.sugardaddy.Entity.Drama
+import com.example.sugardaddy.Entity.Film
 import com.example.sugardaddy.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MyListFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MyListFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var rvListDramas: RecyclerView
+    private lateinit var rvListFilms: RecyclerView
+    private val listDrama = ArrayList<Drama>()
+    private val listFilm = ArrayList<Film>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_my_list, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MyListFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyListFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        rvListDramas = view.findViewById(R.id.rv_list_drama)
+        rvListDramas.setHasFixedSize(true)
+
+        rvListFilms = view.findViewById(R.id.rv_list_film)
+        rvListFilms.setHasFixedSize(true)
+
+        listDrama.addAll(listDramas)
+        listFilm.addAll(listFilms)
+        showRecyclerList()
+    }
+
+    private val listDramas: ArrayList<Drama>
+        get() {
+            val dataName = resources.getStringArray(R.array.data_name_drama)
+            val dataDescription = resources.getStringArray(R.array.data_drama_description)
+            val dataPhoto = resources.getStringArray(R.array.data_drama_photo)
+            val listDrama = ArrayList<Drama>()
+            for (i in dataName.indices) {
+                val drama = Drama(dataName[i],dataDescription[i], dataPhoto[i])
+                listDrama.add(drama)
             }
+            return listDrama
+        }
+
+    private val listFilms: ArrayList<Film>
+        get() {
+            val dataName = resources.getStringArray(R.array.data_name_film)
+            val dataDescription = resources.getStringArray(R.array.data_film_description)
+            val dataPhoto = resources.getStringArray(R.array.data_film_photo)
+            val listFilm = ArrayList<Film>()
+            for (i in dataName.indices) {
+                val film = Film(dataName[i],dataDescription[i], dataPhoto[i])
+                listFilm.add(film)
+            }
+            return listFilm
+        }
+
+    private fun showRecyclerList() {
+        rvListDramas.layoutManager = LinearLayoutManager(activity)
+        val ListDramaAdapter = ListDramaAdapter(listDrama)
+        rvListDramas.adapter = ListDramaAdapter
+
+        rvListFilms.layoutManager= LinearLayoutManager(activity)
+        val ListFilmAdapter = ListFilmAdapter(listFilm)
+        rvListFilms.adapter = ListFilmAdapter
     }
 }

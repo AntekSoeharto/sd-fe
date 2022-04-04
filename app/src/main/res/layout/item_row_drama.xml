@@ -41,7 +41,7 @@
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toEndOf="@+id/img_item_photo"
             card_view:layout_constraintTop_toTopOf="@+id/img_item_photo"
-            tools:text="@string/drama_name" />
+            tools:text="@string/judul" />
 
         <TextView
             android:id="@+id/tv_item_drama_description"
@@ -55,6 +55,6 @@
             card_view:layout_constraintStart_toStartOf="@+id/tv_item_title"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_item_title"
             card_view:layout_constraintVertical_bias="0.0"
-            tools:text="@string/drama_description" />
+            tools:text="@string/description" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

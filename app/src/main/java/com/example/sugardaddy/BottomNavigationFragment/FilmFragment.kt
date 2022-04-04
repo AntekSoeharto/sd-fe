@@ -7,17 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sugardaddy.Adapter.DramaHotAdapter
-import com.example.sugardaddy.Adapter.DramaRecommendedAdapter
 import com.example.sugardaddy.Adapter.FilmHotAdapter
 import com.example.sugardaddy.Adapter.FilmRecommendedAdapter
-import com.example.sugardaddy.Drama
-import com.example.sugardaddy.Film
+import com.example.sugardaddy.Entity.Film
 import com.example.sugardaddy.R
 
 class FilmFragment : Fragment() {
-    private lateinit var tvRecommendedFilms: RecyclerView
-    private lateinit var tvHottestFilms: RecyclerView
+    private lateinit var rvRecommendedFilms: RecyclerView
+    private lateinit var rvHottestFilms: RecyclerView
     private val list = ArrayList<Film>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -27,11 +24,11 @@ class FilmFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tvRecommendedFilms = view.findViewById(R.id.tv_recommended_film)
-        tvRecommendedFilms.setHasFixedSize(true)
+        rvRecommendedFilms = view.findViewById(R.id.rv_recommended_film)
+        rvRecommendedFilms.setHasFixedSize(true)
 
-        tvHottestFilms= view.findViewById(R.id.tv_hot_film)
-        tvHottestFilms.setHasFixedSize(true)
+        rvHottestFilms= view.findViewById(R.id.rv_hot_film)
+        rvHottestFilms.setHasFixedSize(true)
 
         list.addAll(listFilms)
         showRecyclerList()
@@ -51,12 +48,12 @@ class FilmFragment : Fragment() {
         }
 
     private fun showRecyclerList() {
-        tvRecommendedFilms.layoutManager = LinearLayoutManager(activity)
+        rvRecommendedFilms.layoutManager = LinearLayoutManager(activity)
         val FilmRecommendedAdapter = FilmRecommendedAdapter(list)
-        tvRecommendedFilms.adapter = FilmRecommendedAdapter
+        rvRecommendedFilms.adapter = FilmRecommendedAdapter
 
-        tvHottestFilms.layoutManager= LinearLayoutManager(activity)
+        rvHottestFilms.layoutManager= LinearLayoutManager(activity)
         val FilmHotAdapter = FilmHotAdapter(list)
-        tvHottestFilms.adapter = FilmHotAdapter
+        rvHottestFilms.adapter = FilmHotAdapter
     }
 }
