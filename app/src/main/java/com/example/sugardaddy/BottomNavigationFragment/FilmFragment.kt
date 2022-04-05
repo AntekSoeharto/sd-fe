@@ -5,10 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sugardaddy.Adapter.DramaHotAdapter
+import com.example.sugardaddy.Adapter.DramaRecommendedAdapter
 import com.example.sugardaddy.Adapter.FilmHotAdapter
 import com.example.sugardaddy.Adapter.FilmRecommendedAdapter
+import com.example.sugardaddy.Entity.Drama
 import com.example.sugardaddy.Entity.Film
 import com.example.sugardaddy.R
 
@@ -30,7 +34,7 @@ class FilmFragment : Fragment() {
         rvHottestFilms= view.findViewById(R.id.rv_hot_film)
         rvHottestFilms.setHasFixedSize(true)
 
-
+        list.clear()
 
         list.addAll(listFilms)
         showRecyclerList()
@@ -57,5 +61,21 @@ class FilmFragment : Fragment() {
         rvHottestFilms.layoutManager= LinearLayoutManager(activity)
         val FilmHotAdapter = FilmHotAdapter(list)
         rvHottestFilms.adapter = FilmHotAdapter
+
+        FilmRecommendedAdapter.setOnItemClickCallback(object : FilmRecommendedAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Film) {
+                showSelectedHero(data)
+            }
+        })
+
+        FilmHotAdapter.setOnItemClickCallback(object : FilmHotAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Film) {
+                showSelectedHero(data)
+            }
+        })
+    }
+
+    private fun showSelectedHero(film: Film) {
+        Toast.makeText(activity, "Kamu memilih " + film.name, Toast.LENGTH_SHORT).show()
     }
 }

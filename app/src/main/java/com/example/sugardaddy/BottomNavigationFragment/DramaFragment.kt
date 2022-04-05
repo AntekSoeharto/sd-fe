@@ -1,14 +1,18 @@
 package com.example.sugardaddy.BottomNavigationFragment
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sugardaddy.Adapter.DramaHotAdapter
 import com.example.sugardaddy.Adapter.DramaRecommendedAdapter
+import com.example.sugardaddy.Adapter.ListDramaAdapter
 import com.example.sugardaddy.Entity.Drama
 import com.example.sugardaddy.R
 
@@ -31,6 +35,8 @@ class DramaFragment : Fragment(){
         rvHottestDramas= view.findViewById(R.id.rv_hot_drama)
         rvHottestDramas.setHasFixedSize(true)
 
+        list.clear()
+
         list.addAll(listDramas)
         showRecyclerList()
     }
@@ -49,6 +55,7 @@ class DramaFragment : Fragment(){
         }
 
     private fun showRecyclerList() {
+
         rvRecommendedDramas.layoutManager = LinearLayoutManager(activity)
         val DramaRecommendedAdapter = DramaRecommendedAdapter(list)
         rvRecommendedDramas.adapter = DramaRecommendedAdapter
@@ -56,5 +63,21 @@ class DramaFragment : Fragment(){
         rvHottestDramas.layoutManager=LinearLayoutManager(activity)
         val DramaHotAdapter = DramaHotAdapter(list)
         rvHottestDramas.adapter = DramaHotAdapter
+
+        DramaRecommendedAdapter.setOnItemClickCallback(object : DramaRecommendedAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Drama) {
+                showSelectedHero(data)
+            }
+        })
+
+        DramaHotAdapter.setOnItemClickCallback(object : DramaHotAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Drama) {
+                showSelectedHero(data)
+            }
+        })
+    }
+
+    private fun showSelectedHero(drama: Drama) {
+        Toast.makeText(activity, "Kamu memilih " + drama.name, Toast.LENGTH_SHORT).show()
     }
 }

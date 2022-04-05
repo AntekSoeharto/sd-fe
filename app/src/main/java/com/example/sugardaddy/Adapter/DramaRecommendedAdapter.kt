@@ -5,12 +5,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sugardaddy.Entity.Drama
 import com.example.sugardaddy.R
 import com.squareup.picasso.Picasso
 
 class DramaRecommendedAdapter (private val listDrama: ArrayList<Drama>) : RecyclerView.Adapter<DramaRecommendedAdapter.ListViewHolder>(){
+
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_drama, parent, false)
         return ListViewHolder(view)
@@ -21,6 +29,7 @@ class DramaRecommendedAdapter (private val listDrama: ArrayList<Drama>) : Recycl
         Picasso.get().load(photo).into(holder.imgPhoto)
         holder.tvName.text = name
         holder.tvDescription.text = description
+        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listDrama[holder.adapterPosition]) }
     }
 
     override fun getItemCount(): Int = listDrama.size
@@ -29,5 +38,9 @@ class DramaRecommendedAdapter (private val listDrama: ArrayList<Drama>) : Recycl
         var imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
         var tvName: TextView = itemView.findViewById(R.id.tv_item_title)
         var tvDescription: TextView = itemView.findViewById(R.id.tv_item_drama_description)
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: Drama)
     }
 }
