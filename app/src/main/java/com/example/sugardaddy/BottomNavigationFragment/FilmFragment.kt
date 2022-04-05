@@ -114,7 +114,7 @@ class FilmFragment : Fragment() {
 
     private fun getFilmecommendation() {
         val client = AsyncHttpClient()
-        val url = "http://10.0.2.2:9090/film?film_type=Drama&film_display=1"
+        val url = "http://10.0.2.2:9090/film?film_type=Film&film_display=1"
         client.get(url, object : AsyncHttpResponseHandler(){
             override fun onSuccess(
                 statusCode: Int,
