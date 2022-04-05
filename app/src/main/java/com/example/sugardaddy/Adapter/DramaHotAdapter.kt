@@ -23,7 +23,6 @@ class DramaHotAdapter(private val listDrama: ArrayList<Film>) : RecyclerView.Ada
         holder.tvDescription.text = sinopsis
     }
 
-
     override fun getItemCount(): Int = listDrama.size
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -31,6 +30,4 @@ class DramaHotAdapter(private val listDrama: ArrayList<Film>) : RecyclerView.Ada
         var tvName: TextView = itemView.findViewById(R.id.tv_item_title)
         var tvDescription: TextView = itemView.findViewById(R.id.tv_item_drama_description)
     }
-
-
 }

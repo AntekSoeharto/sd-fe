@@ -41,6 +41,8 @@
     <string name="logout">Log Out</string>
     <string name="email">Email</string>
 
+    <string name="simple_text">Twenty-Five Twenty-One merupakan drama yang mengisahkan perjalanan panjang lima karakternya selama 23 tahun dari 1998 sampai 2021.</string>
+
     <string-array name="data_name_drama">
         <item>Twenty-Five Twenty-One</item>
         <item>Ghost Doctor</item>
