@@ -34,7 +34,7 @@
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.21052631578947367" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.19166666666666668" />
-        <entry key="app/src/main/res/layout/fragment_drama.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_drama.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_film.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/fragment_my_list.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/item_row_drama.xml" value="0.19166666666666668" />

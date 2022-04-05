@@ -5,32 +5,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sugardaddy.Entity.Drama
+import com.example.sugardaddy.Entity.Film
 import com.example.sugardaddy.R
 import com.squareup.picasso.Picasso
 
-class DramaHotAdapter(private val listDrama: ArrayList<Drama>) : RecyclerView.Adapter<DramaHotAdapter.ListViewHolder>(){
-
-    private lateinit var onItemClickCallback: OnItemClickCallback
-
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
-
+class DramaHotAdapter(private val listDrama: ArrayList<Film>) : RecyclerView.Adapter<DramaHotAdapter.ListViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_drama, parent, false)
         return ListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (name, description, photo) = listDrama[position]
-        Picasso.get().load(photo).into(holder.imgPhoto)
-        holder.tvName.text = name
-        holder.tvDescription.text = description
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listDrama[holder.adapterPosition]) }
+        val (id, judul, rating, tanggalTerbit, actor, sinopsis, filmType, releaseType, duration, image, imgBackground) = listDrama[position]
+        Picasso.get().load(image).into(holder.imgPhoto)
+        holder.tvName.text = judul
+        holder.tvDescription.text = sinopsis
     }
+
 
     override fun getItemCount(): Int = listDrama.size
 
@@ -40,7 +32,5 @@ class DramaHotAdapter(private val listDrama: ArrayList<Drama>) : RecyclerView.Ad
         var tvDescription: TextView = itemView.findViewById(R.id.tv_item_drama_description)
     }
 
-    interface OnItemClickCallback {
-        fun onItemClicked(data: Drama)
-    }
+
 }

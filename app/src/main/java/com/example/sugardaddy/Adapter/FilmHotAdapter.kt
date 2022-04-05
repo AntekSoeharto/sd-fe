@@ -6,30 +6,21 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sugardaddy.Entity.Drama
 import com.example.sugardaddy.Entity.Film
 import com.example.sugardaddy.R
 import com.squareup.picasso.Picasso
 
 class FilmHotAdapter(private val listFilm: ArrayList<Film>) : RecyclerView.Adapter<FilmHotAdapter.ListViewHolder>(){
-
-    private lateinit var onItemClickCallback: FilmHotAdapter.OnItemClickCallback
-
-    fun setOnItemClickCallback(onItemClickCallback: FilmHotAdapter.OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_film, parent, false)
         return ListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (name, description, photo) = listFilm[position]
-        Picasso.get().load(photo).into(holder.imgPhoto)
-        holder.tvName.text = name
-        holder.tvDescription.text = description
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listFilm[holder.adapterPosition]) }
+        val (id, judul, rating, tanggalTerbit, actor, sinopsis, filmType, releaseType, duration, image, imgBackground) = listFilm[position]
+        Picasso.get().load(image).into(holder.imgPhoto)
+        holder.tvName.text = judul
+        holder.tvDescription.text = sinopsis
     }
 
     override fun getItemCount(): Int = listFilm.size
@@ -38,9 +29,5 @@ class FilmHotAdapter(private val listFilm: ArrayList<Film>) : RecyclerView.Adapt
         var imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
         var tvName: TextView = itemView.findViewById(R.id.tv_item_title)
         var tvDescription: TextView = itemView.findViewById(R.id.tv_item_film_description)
-    }
-
-    interface OnItemClickCallback {
-        fun onItemClicked(data: Film)
     }
 }
