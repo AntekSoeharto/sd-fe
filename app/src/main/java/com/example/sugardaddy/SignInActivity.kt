@@ -73,7 +73,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                     }else{
-                        failedSignIn.text = "Email Atau Password Salah"
+                        failedSignIn.text = "Email Atau Password Salah, coba login kembali"
                     }
 
                 } catch (e: Exception){
