@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Sugar Daddy</string>
     <string name="username">Username</string>
-    <string name="password">password</string>
+    <string name="password">Password</string>
     <string name="exit">exit</string>
     <string name="sign_up">Sign-Up</string>
     <string name="sign_in">Sign-In</string>
@@ -39,6 +39,7 @@
     <string name="text_list_drama">List Drama</string>
     <string name="text_list_film">List Film</string>
     <string name="logout">Log Out</string>
+    <string name="email">Email</string>
 
     <string-array name="data_name_drama">
         <item>Twenty-Five Twenty-One</item>

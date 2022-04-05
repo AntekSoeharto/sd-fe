@@ -17,10 +17,10 @@ class ListFilmAdapter (private val listFilm: ArrayList<Film>) : RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (name, description, photo) = listFilm[position]
-        Picasso.get().load(photo).into(holder.imgPhoto)
-        holder.tvName.text = name
-        holder.tvDescription.text = description
+        val (id, judul, rating, tanggalTerbit, actor, sinopsis, filmType, releaseType, duration, image, imgBackground) = listFilm[position]
+        Picasso.get().load(image).into(holder.imgPhoto)
+        holder.tvName.text = judul
+        holder.tvDescription.text = sinopsis
     }
 
     override fun getItemCount(): Int = listFilm.size
