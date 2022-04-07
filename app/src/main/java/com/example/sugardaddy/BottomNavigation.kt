@@ -23,6 +23,7 @@ class BottomNavigation : AppCompatActivity() {
     private lateinit var binding: ActivityBottomNavigationBinding
     private lateinit var buttonNavView : BottomNavigationView
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBottomNavigationBinding.inflate(layoutInflater)

@@ -27,6 +27,10 @@ class DramaFragment : Fragment(){
     private val listDramaRecommendation = ArrayList<Film>()
     private val listDramaHottest = ArrayList<Film>()
 
+    companion object{
+        val INTENT_PARCELABLE = "OBJECT_INTERN"
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_drama, container, false)
@@ -72,7 +76,7 @@ class DramaFragment : Fragment(){
                         val jsonObject = listDrama.getJSONObject(i)
                         val id = jsonObject.getInt("Rating")
                         val judul = jsonObject.getString("Judul")
-                        val rating = jsonObject.getInt("Rating")
+                        val rating = jsonObject.getDouble("Rating")
                         val tanggalTerbit = jsonObject.getString("TanggalTerbit")
                         val actor = jsonObject.getString("Actor")
                         val sinopsis = jsonObject.getString("Sinopsis")
@@ -130,7 +134,7 @@ class DramaFragment : Fragment(){
                         val jsonObject = listDrama.getJSONObject(i)
                         val id = jsonObject.getInt("Rating")
                         val judul = jsonObject.getString("Judul")
-                        val rating = jsonObject.getInt("Rating")
+                        val rating = jsonObject.getDouble("Rating")
                         val tanggalTerbit = jsonObject.getString("TanggalTerbit")
                         val actor = jsonObject.getString("Actor")
                         val sinopsis = jsonObject.getString("Sinopsis")
@@ -183,11 +187,11 @@ class DramaFragment : Fragment(){
 //
     private fun showRecyclerList() {
         rvRecommendedDramas.layoutManager = LinearLayoutManager(activity)
-        val DramaRecommendedAdapter = DramaRecommendedAdapter(listDramaRecommendation)
+        val DramaRecommendedAdapter = activity?.let { DramaRecommendedAdapter(it, listDramaRecommendation) }
         rvRecommendedDramas.adapter = DramaRecommendedAdapter
 
         rvHottestDramas.layoutManager=LinearLayoutManager(activity)
-        val DramaHotAdapter = DramaHotAdapter(listDramaHottest)
+        val DramaHotAdapter = activity?.let { DramaHotAdapter(it, listDramaHottest) }
         rvHottestDramas.adapter = DramaHotAdapter
     }
 }
