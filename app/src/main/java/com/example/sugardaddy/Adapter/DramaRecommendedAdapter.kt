@@ -1,16 +1,19 @@
 package com.example.sugardaddy.Adapter
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sugardaddy.DetailActivity
 import com.example.sugardaddy.Entity.Film
 import com.example.sugardaddy.R
 import com.squareup.picasso.Picasso
 
-class DramaRecommendedAdapter(private val listDrama: ArrayList<Film>): RecyclerView.Adapter<DramaRecommendedAdapter.ListViewHolder>() {
+class DramaRecommendedAdapter(private val context: Context, private val listDrama: ArrayList<Film>): RecyclerView.Adapter<DramaRecommendedAdapter.ListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_drama, parent, false)
@@ -18,10 +21,17 @@ class DramaRecommendedAdapter(private val listDrama: ArrayList<Film>): RecyclerV
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+        val listDramaRecommendation = listDrama[position]
         val (id, judul, rating, tanggalTerbit, actor, sinopsis, filmType, releaseType, duration, image, imgBackground) = listDrama[position]
         Picasso.get().load(image).into(holder.imgPhoto)
         holder.tvName.text = judul
         holder.tvDescription.text = sinopsis
+
+        holder.itemView.setOnClickListener{
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra(DetailActivity.INTENT_PARCELABLE, listDramaRecommendation)
+            context.startActivity(intent)
+        }
 
     }
 

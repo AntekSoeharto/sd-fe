@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sugardaddy.Adapter.DramaRecommendedAdapter
 import com.example.sugardaddy.Adapter.FilmHotAdapter
 import com.example.sugardaddy.Adapter.FilmRecommendedAdapter
 import com.example.sugardaddy.Entity.Film
@@ -27,6 +28,7 @@ class FilmFragment : Fragment() {
     private val listFilmRecommendation = ArrayList<Film>()
     private val listFilmRHottest = ArrayList<Film>()
     private lateinit var tvText: TextView
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -74,7 +76,7 @@ class FilmFragment : Fragment() {
                         val jsonObject = listFilm.getJSONObject(i)
                         val id = jsonObject.getInt("Rating")
                         val judul = jsonObject.getString("Judul")
-                        val rating = jsonObject.getInt("Rating")
+                        val rating = jsonObject.getDouble("Rating")
                         val tanggalTerbit = jsonObject.getString("TanggalTerbit")
                         val actor = jsonObject.getString("Actor")
                         val sinopsis = jsonObject.getString("Sinopsis")
@@ -132,7 +134,7 @@ class FilmFragment : Fragment() {
                         val jsonObject = listFilm.getJSONObject(i)
                         val id = jsonObject.getInt("Rating")
                         val judul = jsonObject.getString("Judul")
-                        val rating = jsonObject.getInt("Rating")
+                        val rating = jsonObject.getDouble("Rating")
                         val tanggalTerbit = jsonObject.getString("TanggalTerbit")
                         val actor = jsonObject.getString("Actor")
                         val sinopsis = jsonObject.getString("Sinopsis")
@@ -185,11 +187,11 @@ class FilmFragment : Fragment() {
 //
     private fun showRecyclerList() {
         rvRecommendedFilms.layoutManager = LinearLayoutManager(activity)
-        val FilmRecommendedAdapter = FilmRecommendedAdapter(listFilmRecommendation)
+        val FilmRecommendedAdapter = activity?.let { FilmRecommendedAdapter(it, listFilmRecommendation) }
         rvRecommendedFilms.adapter = FilmRecommendedAdapter
 
         rvHottestFilms.layoutManager= LinearLayoutManager(activity)
-        val FilmHotAdapter = FilmHotAdapter(listFilmRHottest)
+        val FilmHotAdapter = activity?.let { FilmHotAdapter(it, listFilmRHottest) }
         rvHottestFilms.adapter = FilmHotAdapter
     }
 }
