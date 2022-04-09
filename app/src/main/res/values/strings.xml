@@ -40,78 +40,8 @@
     <string name="text_list_film">List Film</string>
     <string name="logout">Log Out</string>
     <string name="email">Email</string>
+    <string name="comments">Comment</string>
+    <string name="SEND">SEND</string>
+    <string name="simple_text">simple text</string>
 
-    <string name="simple_text">Twenty-Five Twenty-One merupakan drama yang mengisahkan perjalanan panjang lima karakternya selama 23 tahun dari 1998 sampai 2021.</string>
-
-    <string-array name="data_name_drama">
-        <item>Twenty-Five Twenty-One</item>
-        <item>Ghost Doctor</item>
-        <item>Forecasting Love and Weather</item>
-        <item>Tracer</item>
-        <item>Moonshine</item>
-        <item>Artificial City</item>
-        <item>The One and Only</item>
-        <item>Bulgasal: Immortal Souls</item>
-        <item>Young Lady and Gentleman</item>
-    </string-array>
-
-    <string-array name="data_drama_description">
-        <item>Twenty-Five Twenty-One merupakan drama yang mengisahkan perjalanan panjang lima karakternya selama 23 tahun dari 1998 sampai 2021. </item>
-        <item>Ghost Doctor berkisah tentang dua dokter dari latar belakang ekstrem, yang sangat bertolak belakang,</item>
-        <item>Forecasting Love and Weather berkisah tentang Jin Ha-kyung, peramal umum Divisi 2 Administrasi Meteorologi Korea (KMA) </item>
-        <item>Moonshine merupakan drama Korea yang mengisahkan sejarah larangan alkohol pada era Joseon. </item>
-        <item>Drama ini berawal dari museum seni milik Sung Jin Group, konglomerat besar yang memegang kendali dunia </item>
-        <item>The One and Only merupakan drama Korea terbaru JTBC yang mengisahkan tiga perempuan yang punya masalah </item>
-        <item>Bulgasal: Immortal Souls mengangkat cerita tentang makhluk mitos abadi bernama Dan Hwal (Lee Jin-wook). </item>
-        <item>Sejak pertama kali tayang pada September 2021 lalu, drama Korea Young Lady and Gentleman sudah mendapatkan kritik pedas dari berbagai pihak. r</item>
-        <item>abc</item>
-    </string-array>
-
-    <string-array name="data_drama_photo">
-        <item>https://cdns.klimg.com/resized/670x335/p/headline/drakor-twenty-five-twenty-one-dibintang-cc0418.jpg</item>
-        <item>https://akcdn.detik.net.id/visual/2021/05/06/drama-korea-doctor-stranger_169.png?w=650</item>
-        <item>https://asianwiki.com/images/2/27/Forecasting_Love_and_Weather-mp2.jpg</item>
-        <item>https://asianwiki.com/images/6/64/When_Flowers_Bloom_I_Think_of_the_Moon-p1.jpg</item>
-        <item>https://upload.wikimedia.org/wikipedia/en/e/e7/Poster_of_the_Love_Rain.jpg</item>
-        <item>https://akcdn.detik.net.id/api/wm/2022/01/06/drama-the-one-and-only-foto-instagramcomjtbcdrama_169.jpeg</item>
-        <item>https://asianwiki.com/images/7/7a/Bulgasal-_Immortal_Souls-p2.jpg</item>
-        <item>https://asianwiki.com/images/f/fb/Snowdrop_Korean_Drama-p2.jpg</item>
-        <item>https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2021/01/scmc.jpg</item>
-    </string-array>
-
-    <string-array name="data_name_film">
-        <item>Twenty-Five Twenty-One</item>
-        <item>Ghost Doctor</item>
-        <item>Forecasting Love and Weather</item>
-        <item>Tracer</item>
-        <item>Moonshine</item>
-        <item>Artificial City</item>
-        <item>The One and Only</item>
-        <item>Bulgasal: Immortal Souls</item>
-        <item>Young Lady and Gentleman</item>
-    </string-array>
-
-    <string-array name="data_film_description">
-        <item>Twenty-Five Twenty-One merupakan drama yang mengisahkan perjalanan panjang lima karakternya selama 23 tahun dari 1998 sampai 2021. </item>
-        <item>Ghost Doctor berkisah tentang dua dokter dari latar belakang ekstrem, yang sangat bertolak belakang,</item>
-        <item>Forecasting Love and Weather berkisah tentang Jin Ha-kyung, peramal umum Divisi 2 Administrasi Meteorologi Korea (KMA) </item>
-        <item>Moonshine merupakan drama Korea yang mengisahkan sejarah larangan alkohol pada era Joseon. </item>
-        <item>Drama ini berawal dari museum seni milik Sung Jin Group, konglomerat besar yang memegang kendali dunia </item>
-        <item>The One and Only merupakan drama Korea terbaru JTBC yang mengisahkan tiga perempuan yang punya masalah </item>
-        <item>Bulgasal: Immortal Souls mengangkat cerita tentang makhluk mitos abadi bernama Dan Hwal (Lee Jin-wook). </item>
-        <item>Sejak pertama kali tayang pada September 2021 lalu, drama Korea Young Lady and Gentleman sudah mendapatkan kritik pedas dari berbagai pihak. r</item>
-        <item>abc</item>
-    </string-array>
-
-    <string-array name="data_film_photo">
-        <item>https://cdns.klimg.com/resized/670x335/p/headline/drakor-twenty-five-twenty-one-dibintang-cc0418.jpg</item>
-        <item>https://akcdn.detik.net.id/visual/2021/05/06/drama-korea-doctor-stranger_169.png?w=650</item>
-        <item>https://asianwiki.com/images/2/27/Forecasting_Love_and_Weather-mp2.jpg</item>
-        <item>https://asianwiki.com/images/6/64/When_Flowers_Bloom_I_Think_of_the_Moon-p1.jpg</item>
-        <item>https://upload.wikimedia.org/wikipedia/en/e/e7/Poster_of_the_Love_Rain.jpg</item>
-        <item>https://akcdn.detik.net.id/api/wm/2022/01/06/drama-the-one-and-only-foto-instagramcomjtbcdrama_169.jpeg</item>
-        <item>https://asianwiki.com/images/7/7a/Bulgasal-_Immortal_Souls-p2.jpg</item>
-        <item>https://asianwiki.com/images/f/fb/Snowdrop_Korean_Drama-p2.jpg</item>
-        <item>https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2021/01/scmc.jpg</item>
-    </string-array>
 </resources>
