@@ -15,7 +15,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:background="#293EB6">
 
         <TextView
             android:id="@+id/tv_text_comments"
@@ -25,6 +26,7 @@
             android:textStyle="bold"
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/white"
             tools:text="@string/judul" />
 
         <TextView
@@ -34,7 +36,8 @@
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:maxLines="5"
-            android:paddingBottom="50dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/white"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_text_comments"
             card_view:layout_constraintEnd_toEndOf="@+id/tv_text_comments"
             card_view:layout_constraintStart_toStartOf="@+id/tv_text_comments"
