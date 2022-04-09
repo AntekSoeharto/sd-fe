@@ -1,15 +1,15 @@
 package com.example.sugardaddy
 
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.sugardaddy.BottomNavigationFragment.DramaFragment
-import com.example.sugardaddy.BottomNavigationFragment.FilmFragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.sugardaddy.Adapter.CommentsAdapter
+import com.example.sugardaddy.Entity.Comments
 import com.example.sugardaddy.Entity.Film
 import com.squareup.picasso.Picasso
-import java.io.File
 
 class DetailActivity : AppCompatActivity() {
 
@@ -22,6 +22,9 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var tvDuration: TextView
     private lateinit var image: ImageView
     private lateinit var imgBackground: ImageView
+
+    private lateinit var rvComments: RecyclerView
+    private val list = ArrayList<Comments>()
 
     companion object{
         const val INTENT_PARCELABLE = "OBJECT_INTERN"
@@ -66,5 +69,27 @@ class DetailActivity : AppCompatActivity() {
             Picasso.get().load(detailFilm.imgBackground).into(imgBackground)
         }
 
+        rvComments = findViewById(R.id.rv_comments)
+        rvComments.setHasFixedSize(true)
+
+        list.addAll(listComments)
+        showRecyclerList()
+    }
+
+    private val listComments: ArrayList<Comments>
+        get() {
+            val dataUsername = resources.getStringArray(R.array.array_username_comments)
+            val dataComments = resources.getStringArray(R.array.array_comments)
+            val listComments = ArrayList<Comments>()
+            for (i in dataUsername.indices) {
+                val comments = Comments(dataUsername[i],dataComments[i])
+                listComments.add(comments)
+            }
+            return listComments
+        }
+    private fun showRecyclerList() {
+        rvComments.layoutManager = LinearLayoutManager(this)
+        val CommentsAdapter = CommentsAdapter(list)
+        rvComments.adapter = CommentsAdapter
     }
 }
