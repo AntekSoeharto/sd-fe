@@ -40,9 +40,33 @@
     <string name="text_list_film">List Film</string>
     <string name="logout">Log Out</string>
     <string name="email">Email</string>
-    <string name="comments">Comment</string>
-    <string name="SEND">SEND</string>
     <string name="simple_text">simple text</string>
     <string name="comments_username">Username</string>
 
+    <string name="username_comments">Username</string>
+    <string name="comment">Comments</string>
+
+    <string-array name="array_username_comments">
+        <item>Ahmad</item>
+        <item>Dani</item>
+        <item>Andreas</item>
+        <item>Jumaga</item>
+        <item>Jul</item>
+        <item>Azare</item>
+        <item>Soedirman</item>
+        <item>Soekarno</item>
+        <item>Soepomo</item>
+    </string-array>
+
+    <string-array name="array_comments">
+        <item>good</item>
+        <item>good</item>
+        <item>nice</item>
+        <item>fantastic</item>
+        <item>fantastic</item>
+        <item>good</item>
+        <item>good</item>
+        <item>so sexy</item>
+        <item>nice</item>
+    </string-array>
 </resources>

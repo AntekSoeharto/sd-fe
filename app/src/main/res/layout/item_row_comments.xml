@@ -15,17 +15,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:background="#293EB6">
 
         <TextView
-            android:id="@+id/tv_comments_username"
+            android:id="@+id/tv_text_comments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:textStyle="bold"
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
-            tools:text="@string/comments_username" />
+            android:textColor="@color/white"
+            tools:text="@string/judul" />
 
         <TextView
             android:id="@+id/tv_comments_description"
@@ -34,10 +36,11 @@
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:maxLines="5"
-            android:paddingBottom="50dp"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_comments_username"
-            card_view:layout_constraintEnd_toEndOf="@+id/tv_comments_username"
-            card_view:layout_constraintStart_toStartOf="@+id/tv_comments_username"
+            android:paddingBottom="10dp"
+            android:textColor="@color/white"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_text_comments"
+            card_view:layout_constraintEnd_toEndOf="@+id/tv_text_comments"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_text_comments"
             card_view:layout_constraintVertical_bias="0.0"
             tools:text="@string/description" />
     </androidx.constraintlayout.widget.ConstraintLayout>
