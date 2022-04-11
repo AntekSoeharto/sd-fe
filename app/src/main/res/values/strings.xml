@@ -43,5 +43,6 @@
     <string name="comments">Comment</string>
     <string name="SEND">SEND</string>
     <string name="simple_text">simple text</string>
+    <string name="comments_username">Username</string>
 
 </resources>
