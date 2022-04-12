@@ -11,129 +11,199 @@
         android:layout_height="66dp"
         android:layout_gravity="center"
         android:background="#FFFFFF" />
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="285dp"
-        android:layout_weight="1"
-        android:padding="30dp"
-        android:background="@drawable/gradient"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingBottom="12dp"
-            android:text="@string/sign_up"
-            android:textColor="#fff"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/name"
-            android:textColor="#fff"
-            android:textSize="15dp"
-            android:textStyle="bold" />
-        <EditText
-            android:id="@+id/edt_name"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/border"
-            android:hint="Name"
-            android:inputType="text"
-            android:paddingLeft="10dp" />
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="15dp"
-            android:text="@string/username"
-            android:textColor="#fff"/>
-
-        <EditText
-            android:id="@+id/edt_username"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/border"
-            android:hint="username"
-            android:inputType="text"
-            android:paddingLeft="10dp" />
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="15dp"
-            android:text="@string/password"
-            android:textColor="#fff"/>
-
-        <EditText
-            android:id="@+id/edt_password"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/border"
-            android:hint="password"
-            android:inputType="textPassword"
-            android:paddingLeft="10dp" />
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="15dp"
-            android:text="@string/confirm_password"
-            android:textColor="#fff"/>
-
-        <EditText
-            android:id="@+id/edt_confirm_password"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/border"
-            android:hint="@string/confirm_password"
-            android:inputType="textPassword"
-            android:paddingLeft="10dp" />
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"/>
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="285dp"
+            android:layout_weight="1"
+            android:padding="30dp"
+            android:background="@drawable/gradient"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btn_signup"
-                android:layout_width="185dp"
-                android:layout_height="40dp"
-                android:background="@drawable/button"
-                android:padding="8dp"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="12dp"
                 android:text="@string/sign_up"
-                android:textColor="#FFF"
+                android:textColor="#fff"
+                android:textSize="20dp"
                 android:textStyle="bold" />
-            <RelativeLayout
-                android:layout_width="8dp"
-                android:layout_height="wrap_content"/>
 
-            <Button
-                android:id="@+id/btn_close"
+            <TextView
+                android:id="@+id/tv_failed_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textSize="15dp"
+                android:gravity="center"
+                android:textColor="#FF0000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/edt_name"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/button"
-                android:padding="6dp"
-                android:text="@string/close"
-                android:textColor="#fff"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </LinearLayout>
+                android:background="@drawable/border"
+                android:hint="Name"
+                android:inputType="text"
+                android:paddingLeft="10dp" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:text="@string/username"
+                android:textColor="#fff"/>
 
+            <EditText
+                android:id="@+id/edt_username"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/border"
+                android:hint="username"
+                android:inputType="text"
+                android:paddingLeft="10dp" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:text="@string/email"
+                android:textColor="#fff"/>
+
+            <EditText
+                android:id="@+id/edt_email"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/border"
+                android:hint="email"
+                android:inputType="text"
+                android:paddingLeft="10dp" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:text="@string/gender"
+                android:textColor="#fff"/>
+
+            <EditText
+                android:id="@+id/edt_gender"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/border"
+                android:hint="gender"
+                android:inputType="text"
+                android:paddingLeft="10dp" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/birth_of_date"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edt_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/border"
+                android:hint="birthday"
+                android:inputType="date"
+                android:paddingLeft="10dp" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:text="@string/password"
+                android:textColor="#fff"/>
+
+            <EditText
+                android:id="@+id/edt_password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/border"
+                android:hint="password"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:text="@string/confirm_password"
+                android:textColor="#fff"/>
+
+            <EditText
+                android:id="@+id/edt_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/border"
+                android:hint="@string/confirm_password"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_signup"
+                    android:layout_width="185dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/button"
+                    android:text="@string/sign_up"
+                    android:textColor="#FFF"
+                    android:textStyle="bold" />
+                <RelativeLayout
+                    android:layout_width="8dp"
+                    android:layout_height="wrap_content"/>
+
+                <Button
+                    android:id="@+id/btn_close"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/button"
+                    android:text="@string/close"
+                    android:textColor="#fff"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

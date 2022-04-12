@@ -45,8 +45,8 @@
 
     <string name="username_comments">Username</string>
     <string name="comment">Comments</string>
-    <string name="TempDetailActor">Seok Woo, Jung Yu-mi, Sung Gyeong, Ma Dong-seok, Sang Hwa , Kim Eui-Sung, Yong-suk , Ahn So-hee, Sohee , Kim Su-an, Su-an , Choi Woo-sik, Young-guk</string>
-    <string name="detail">Detail</string>
+    <string name="gender">Gender</string>
+    <string name="birth_of_date">Birth Of Date</string>
 
     <string-array name="array_username_comments">
         <item>Ahmad</item>
