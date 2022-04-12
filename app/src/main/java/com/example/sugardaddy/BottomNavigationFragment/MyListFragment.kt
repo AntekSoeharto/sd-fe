@@ -5,16 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sugardaddy.Adapter.ListDramaAdapter
-import com.example.sugardaddy.Adapter.ListFilmAdapter
 import com.example.sugardaddy.Entity.Film
 import com.example.sugardaddy.R
 
 class MyListFragment : Fragment() {
     private lateinit var rvListDramas: RecyclerView
-    private lateinit var rvListFilms: RecyclerView
 //    private val listDrama = ArrayList<Drama>()
     private val listFilm = ArrayList<Film>()
 
