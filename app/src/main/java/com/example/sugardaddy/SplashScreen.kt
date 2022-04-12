@@ -42,7 +42,7 @@ class SplashScreen : AppCompatActivity() {
             noteHelper.open()
             val deferredNotes = async(Dispatchers.IO) {
                 val cursor = noteHelper.queryAll()
-                MappingHelper.mapCursorToArrayList(cursor)
+                MappingHelper.mapUserCursorToArrayList(cursor)
             }
             val users = deferredNotes.await()
             if (users.size > 0) {

@@ -1,7 +1,10 @@
 package com.example.sugardaddy
 
+import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +12,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sugardaddy.Adapter.CommentsAdapter
 import com.example.sugardaddy.Entity.Comments
 import com.example.sugardaddy.Entity.Film
+import com.example.sugardaddy.db.DatabaseContract
+import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.ACTOR
+import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.DURATION
+import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.FILM_TYPE
+import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.GENRE
+import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.IMAGE
+import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.IMG_BACKGRUOND
+import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.JUDUL
+import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.RATING
+import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.RELEASE_TYPE
+import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.SINOPSIS
+import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.TANGGAL_TERBIT
+import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion._ID
+import com.example.sugardaddy.db.FilmHelper
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.squareup.picasso.Picasso
 
 class DetailActivity : AppCompatActivity() {
@@ -23,9 +41,12 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var tvDuration: TextView
     private lateinit var image: ImageView
     private lateinit var imgBackground: ImageView
+    private lateinit var filmHelper: FilmHelper
 
     private lateinit var rvComments: RecyclerView
     private val list = ArrayList<Comments>()
+
+    private lateinit var btnAddList: View
 
     companion object{
         const val INTENT_PARCELABLE = "OBJECT_INTERN"
@@ -37,6 +58,30 @@ class DetailActivity : AppCompatActivity() {
 
         val detailFilm = intent.getParcelableExtra<Film>(INTENT_PARCELABLE)
         val detailDrama = intent.getParcelableExtra<Film>(INTENT_PARCELABLE)
+        filmHelper = FilmHelper(this)
+        filmHelper = FilmHelper.getInstance(applicationContext)
+        filmHelper.open()
+
+        btnAddList = findViewById(R.id.fab_addList)
+        btnAddList.setOnClickListener {
+            if(detailDrama != null){
+                val values = ContentValues()
+                values.put(_ID, detailDrama.ID)
+                values.put(JUDUL, detailDrama.ID)
+                values.put(RATING, detailDrama.ID)
+                values.put(TANGGAL_TERBIT, detailDrama.ID)
+                values.put(ACTOR, detailDrama.ID)
+                values.put(SINOPSIS, detailDrama.ID)
+                values.put(GENRE, detailDrama.ID)
+                values.put(FILM_TYPE, detailDrama.ID)
+                values.put(RELEASE_TYPE, detailDrama.ID)
+                values.put(DURATION, detailDrama.ID)
+                values.put(IMAGE, detailDrama.ID)
+                values.put(IMG_BACKGRUOND, detailDrama.ID)
+
+                val status = filmHelper.insert(values)
+            }
+        }
 
         tvJudul = findViewById(R.id.detail_movie_title)
         tvRating = findViewById(R.id.rate)
@@ -60,6 +105,7 @@ class DetailActivity : AppCompatActivity() {
             tvDuration.text = detailDrama.duration.toString()
             Picasso.get().load(detailDrama.image).into(image)
             Picasso.get().load(detailDrama.imgBackground).into(imgBackground)
+
         }else if (detailFilm != null){
             tvJudul.text = detailFilm.judul
             tvRating.text = detailFilm.rating.toString()
@@ -97,3 +143,6 @@ class DetailActivity : AppCompatActivity() {
         rvComments.adapter = CommentsAdapter
     }
 }
+
+
+

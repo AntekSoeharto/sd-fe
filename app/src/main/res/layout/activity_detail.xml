@@ -91,7 +91,7 @@
             app:layout_constraintTop_toBottomOf="@+id/detail_movie_img" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_add"
+            android:id="@+id/fab_addList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:foregroundGravity="bottom"
@@ -150,7 +150,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:text="Seok Woo, Jung Yu-mi, Sung Gyeong, Ma Dong-seok, Sang Hwa , Kim Eui-Sung, Yong-suk , Ahn So-hee, Sohee , Kim Su-an, Su-an , Choi Woo-sik, Young-guk "
+            android:text="@string/TempDetailActor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title_cast" />
@@ -166,7 +166,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:text="Detail"
+            android:text="@string/detail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_detail_cast" />

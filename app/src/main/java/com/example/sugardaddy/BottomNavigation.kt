@@ -33,32 +33,34 @@ class BottomNavigation : AppCompatActivity() {
         currentFragment(dramaFragment)
 
         buttonNavView = binding.bottomNavigation
-        searchView = binding.searchView
+//        searchView = binding.searchView
+//        searchView.setAdap
 
-        val listDramaFilm = arrayOf("Batman","DOTS","Spider-Man","Naruto","Doraemon","Power Ranger","Kamen Rider","Avengers End-Game")
 
-        val listAdapter : ArrayAdapter<String> = ArrayAdapter(
-            this,android.R.layout.simple_list_item_1,listDramaFilm
-        )
+//        val listDramaFilm = arrayOf("Batman","DOTS","Spider-Man","Naruto","Doraemon","Power Ranger","Kamen Rider","Avengers End-Game")
 
-        binding.dramaFilmList.adapter = listAdapter;
+//        val listAdapter : ArrayAdapter<String> = ArrayAdapter(
+//            this,android.R.layout.simple_list_item_1,listDramaFilm
+//        )
 
-        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                binding.searchView.clearFocus()
-                if (listDramaFilm.contains(query)){
+//        binding.dramaFilmList.adapter = listAdapter;
 
-                    listAdapter.filter.filter(query)
-
-                }
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                listAdapter.filter.filter(newText)
-                return false
-            }
-        })
+//        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                binding.searchView.clearFocus()
+//                if (listDramaFilm.contains(query)){
+//
+//                    listAdapter.filter.filter(query)
+//
+//                }
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                listAdapter.filter.filter(newText)
+//                return false
+//            }
+//        })
 
         supportActionBar?.hide()
 
@@ -67,22 +69,22 @@ class BottomNavigation : AppCompatActivity() {
                 R.id.ic_drama -> {
                     currentFragment(dramaFragment)
                     binding.searchView.visibility = View.VISIBLE
-                    binding.dramaFilmList.visibility = View.VISIBLE
+//                    binding.dramaFilmList.visibility = View.GONE
                 }
                 R.id.ic_film -> {
                     currentFragment(filmFragment)
                     binding.searchView.visibility = View.VISIBLE
-                    binding.dramaFilmList.visibility = View.VISIBLE
+//                    binding.dramaFilmList.visibility = View.GONE
                 }
                 R.id.ic_my_list -> {
                     currentFragment(myListFragment)
                     binding.searchView.visibility = View.GONE
-                    binding.dramaFilmList.visibility = View.GONE
+//                    binding.dramaFilmList.visibility = View.GONE
                 }
                 R.id.ic_my_account -> {
                     currentFragment(myAccountFragment)
                     binding.searchView.visibility = View.GONE
-                    binding.dramaFilmList.visibility = View.GONE
+//                    binding.dramaFilmList.visibility = View.GONE
                 }
             }
             true

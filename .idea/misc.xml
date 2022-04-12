@@ -19,9 +19,9 @@
         <entry key="..\:/Users/asus/AndroidStudioProjects/sd-fe/app/src/main/res/drawable/ic_baseline_delete_10.xml" value="0.1635" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/sd-fe/app/src/main/res/drawable/ic_baseline_lock_open_24.xml" value="0.1" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/sd-fe/app/src/main/res/drawable/searchview_background.xml" value="0.1" />
-        <entry key="..\:/Users/asus/AndroidStudioProjects/sd-fe/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.264" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/sd-fe/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.1" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/sd-fe/app/src/main/res/layout/activity_change_password.xml" value="0.264" />
-        <entry key="..\:/Users/asus/AndroidStudioProjects/sd-fe/app/src/main/res/layout/activity_detail.xml" value="0.2" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/sd-fe/app/src/main/res/layout/activity_detail.xml" value="0.1" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/sd-fe/app/src/main/res/layout/activity_main.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/sd-fe/app/src/main/res/layout/activity_sign_in.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/sd-fe/app/src/main/res/layout/detail_display.xml" value="0.264" />
@@ -33,7 +33,7 @@
         <entry key="..\:/Users/asus/AndroidStudioProjects/sd-fe/app/src/main/res/menu/nav_menu.xml" value="0.264" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/sd-fe/app/src/main/res/menu/option_menu.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/activity_bottom_navigation.xml" value="0.1875" />
-        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.21052631578947367" />
