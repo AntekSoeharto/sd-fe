@@ -51,8 +51,6 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
         btnSignIn.setOnClickListener(this)
         val btnSignUp: Button = findViewById(R.id.btn_signup_insignin)
         btnSignUp.setOnClickListener(this)
-//        val btnSignIn: Button = findViewById(R.id.btn_signin)
-//        btnSignIn.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -82,16 +80,6 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
                 try {
                     val responseObject = JSONObject(result)
                     val status = responseObject.getInt("status")
-
-//                    val id = dataUser.getInt("ID")
-//                    val nama = dataUser.getString("Nama")
-//                    val username = dataUser.getString("Username")
-//                    val email = dataUser.getString("Email")
-//                    val gender = dataUser.getString("Gender")
-//                    val birthDay = dataUser.getString("BirthDay")
-//                    val password = password.text.toString()
-//                    Log.e("DeBug", "$status")
-
 
                     if (status == 200){
                         getAccount()
