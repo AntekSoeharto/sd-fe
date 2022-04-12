@@ -1,18 +1,24 @@
 package com.example.sugardaddy.BottomNavigationFragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sugardaddy.Adapter.FilmRecommendedAdapter
+import com.example.sugardaddy.Adapter.ListDramaAdapter
 import com.example.sugardaddy.Entity.Film
+import com.example.sugardaddy.Helper.MappingHelper
 import com.example.sugardaddy.R
+import com.example.sugardaddy.db.FilmHelper
 
 class MyListFragment : Fragment() {
     private lateinit var rvListDramas: RecyclerView
 //    private val listDrama = ArrayList<Drama>()
-    private val listFilm = ArrayList<Film>()
+    private var listFilm = ArrayList<Film>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -23,13 +29,28 @@ class MyListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         rvListDramas = view.findViewById(R.id.rv_list_drama)
         rvListDramas.setHasFixedSize(true)
+        listFilm = getData()
 
 //        rvListFilms = view.findViewById(R.id.rv_list_film)
 //        rvListFilms.setHasFixedSize(true)
 //
 //        listDrama.addAll(listDramas)
 //        listFilm.addAll(listFilms)
-//        showRecyclerList()
+        showRecyclerList()
+    }
+    private fun getData(): ArrayList<Film>{
+        var listFilm: ArrayList<Film> = ArrayList()
+        val filmHelper = activity?.let { FilmHelper.getInstance(it.applicationContext) }
+        if (filmHelper != null) {
+            filmHelper.open()
+        }
+        val cursor = filmHelper?.queryAll()
+        listFilm = MappingHelper.mapFilmCursorToArrayList(cursor)
+        if (filmHelper != null) {
+            filmHelper.close()
+        }
+        Log.e("List  ", "${listFilm.size}")
+        return listFilm
     }
 
 //    private val listDramas: ArrayList<Drama>
@@ -58,13 +79,9 @@ class MyListFragment : Fragment() {
 //            return listFilm
 //        }
 //
-//    private fun showRecyclerList() {
-//        rvListDramas.layoutManager = LinearLayoutManager(activity)
-//        val ListDramaAdapter = ListDramaAdapter(listDrama)
-//        rvListDramas.adapter = ListDramaAdapter
-//
-//        rvListFilms.layoutManager= LinearLayoutManager(activity)
-//        val ListFilmAdapter = ListFilmAdapter(listFilm)
-//        rvListFilms.adapter = ListFilmAdapter
-//    }
+    private fun showRecyclerList() {
+        val MyList = activity?.let { ListDramaAdapter(it, listFilm) }
+        rvListDramas.adapter = MyList
+        rvListDramas.layoutManager = LinearLayoutManager(activity)
+    }
 }
