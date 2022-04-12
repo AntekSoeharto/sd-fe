@@ -140,7 +140,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
                     values.put(NAMA, dataUser.getString("Name"))
                     values.put(USERNAME, dataUser.getString("Username"))
                     values.put(EMAIL, dataUser.getString("Email"))
-                    values.put(GENDER, dataUser.getString("Name"))
+                    values.put(GENDER, dataUser.getString("Gender"))
                     values.put(BIRTH_DATE, dataUser.getString("BirthDay"))
                     values.put(PASSWORD, password.text.toString())
 
