@@ -14,6 +14,9 @@
         <activity
             android:name=".DetailActivity"
             android:exported="false" />
+        <activity
+            android:name=".DetailMyListActivity"
+            android:exported="false" />
         <!-- <activity -->
         <!-- android:name=".ChangePassword" -->
         <!-- android:exported="false" /> -->

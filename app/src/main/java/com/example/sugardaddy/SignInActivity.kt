@@ -135,19 +135,12 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
                     val dataArray = responseObject.getJSONArray("data")
                     val dataUser = dataArray.getJSONObject(0)
 
-                    user.id = dataUser.getInt("ID")
-                    user.nama = dataUser.getString("Name")
-                    user.username = dataUser.getString("Username")
-                    user.email = dataUser.getString("Email")
-                    user.gender = dataUser.getString("Gender")
-                    user.birthDay = dataUser.getString("BirthDay")
-                    user.password = password.text.toString()
                     val values = ContentValues()
                     values.put(_ID, dataUser.getInt("ID"))
                     values.put(NAMA, dataUser.getString("Name"))
                     values.put(USERNAME, dataUser.getString("Username"))
                     values.put(EMAIL, dataUser.getString("Email"))
-                    values.put(GENDER, dataUser.getString("Name"))
+                    values.put(GENDER, dataUser.getString("Gender"))
                     values.put(BIRTH_DATE, dataUser.getString("BirthDay"))
                     values.put(PASSWORD, password.text.toString())
 
@@ -155,14 +148,11 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
                     val status = userHelper.insert(values)
 
                     if(status > -1){
-                        Toast.makeText(this@SignInActivity, "User Addad", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@SignInActivity, "Login Success", Toast.LENGTH_SHORT).show()
                     }else{
-                        Toast.makeText(this@SignInActivity, "User Failed Addad", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@SignInActivity, "Login Failed", Toast.LENGTH_SHORT).show()
                     }
                     Log.e("Error", "${user.gender}")
-
-
-
 
                 } catch (e: Exception){
                     Log.e("Error", "$e")
