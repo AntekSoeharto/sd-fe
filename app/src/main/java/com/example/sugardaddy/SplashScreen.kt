@@ -45,7 +45,6 @@ class SplashScreen : AppCompatActivity() {
                 MappingHelper.mapCursorToArrayList(cursor)
             }
             val users = deferredNotes.await()
-            Log.e("List Size : ", "${users.size}")
             if (users.size > 0) {
                 Handler().postDelayed({
                     val intent = Intent(this@SplashScreen, BottomNavigation::class.java)
