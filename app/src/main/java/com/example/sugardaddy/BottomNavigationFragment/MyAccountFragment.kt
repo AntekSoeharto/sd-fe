@@ -79,6 +79,7 @@ class MyAccountFragment : Fragment(), View.OnClickListener {
             val users = deferredNotes.await()
             for (i in 0 until users.size){
                 if (i == 0){
+                    Log.e("Debuh : ", "${users.get(i).nama}")
                     tvName.text = users.get(i).nama
                     tvUserName.text = users.get(i).username
                     tvEmail.text = users.get(i).email
