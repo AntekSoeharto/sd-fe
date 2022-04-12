@@ -5,19 +5,19 @@ import android.content.Context
 import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
-import com.example.sugardaddy.db.DatabaseContract.UserColumn.Companion.TABLE_NAME_USER
-import com.example.sugardaddy.db.DatabaseContract.UserColumn.Companion._ID
+import android.database.sqlite.SQLiteOpenHelper
+import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.TABLE_NAME_FILM
 
-class UserHelper(context: Context) {
+class FilmHelper(context: Context) {
     private var dataBaseHelper: DatabaseHelper = DatabaseHelper(context)
     private lateinit var database: SQLiteDatabase
 
     companion object {
-        private const val DATABASE_TABLE_USER = TABLE_NAME_USER
-        private var INSTANCE: UserHelper? = null
-        fun getInstance(context: Context): UserHelper =
+        private const val DATABASE_TABLE_FILM = TABLE_NAME_FILM
+        private var INSTANCE: FilmHelper? = null
+        fun getInstance(context: Context): FilmHelper =
             INSTANCE ?: synchronized(this) {
-                INSTANCE ?: UserHelper(context)
+                INSTANCE ?: FilmHelper(context)
             }
     }
 
@@ -35,30 +35,30 @@ class UserHelper(context: Context) {
 
     fun queryAll(): Cursor {
         return database.query(
-            DATABASE_TABLE_USER,
+            FilmHelper.DATABASE_TABLE_FILM,
             null,
             null,
             null,
             null,
             null,
-            "$_ID ASC",
+            "${DatabaseContract.UserColumn._ID} ASC",
             null)
     }
 
     fun queryById(id: String): Cursor {
-        return database.query(DATABASE_TABLE_USER, null, "$_ID = ?", arrayOf(id), null, null, null, null)
+        return database.query(FilmHelper.DATABASE_TABLE_FILM, null, "${DatabaseContract.UserColumn._ID} = ?", arrayOf(id), null, null, null, null)
     }
 
     fun insert(values: ContentValues?): Long {
-        return database.insert(DATABASE_TABLE_USER, null, values)
+        return database.insert(FilmHelper.DATABASE_TABLE_FILM, null, values)
     }
 
     fun update(id: String, values: ContentValues?): Int {
-        return database.update(DATABASE_TABLE_USER, values, "$_ID = ?", arrayOf(id))
+        return database.update(FilmHelper.DATABASE_TABLE_FILM, values, "${DatabaseContract.UserColumn._ID} = ?", arrayOf(id))
     }
 
     fun deleteById(id: String): Int {
-        return database.delete(DATABASE_TABLE_USER, "$_ID = '$id'", null)
+        return database.delete(FilmHelper.DATABASE_TABLE_FILM, "${DatabaseContract.UserColumn._ID} = '$id'", null)
     }
 
     fun clearAllhelp(){

@@ -22,7 +22,7 @@ class DramaRecommendedAdapter(private val context: Context, private val listDram
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val listDramaRecommendation = listDrama[position]
-        val (id, judul, rating, tanggalTerbit, actor, sinopsis, filmType, releaseType, duration, image, imgBackground) = listDrama[position]
+        val (id, judul, rating, tanggalTerbit, actor, sinopsis, genre, filmType, releaseType, duration, image, imgBackground) = listDrama[position]
         Picasso.get().load(image).into(holder.imgPhoto)
         holder.tvName.text = judul
         holder.tvDescription.text = sinopsis

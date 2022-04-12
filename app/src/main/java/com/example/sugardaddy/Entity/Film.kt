@@ -11,6 +11,7 @@ data class Film(
     var tanggalTerbit: String,
     var actor: String,
     var sinopsis: String,
+    var genre: String,
     var filmType: String,
     var releaseType: String,
     var duration: Int,

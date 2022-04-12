@@ -17,6 +17,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var tvRating: TextView
     private lateinit var tvType: TextView
     private lateinit var tvSinopsis: TextView
+    private lateinit var tvGenre: TextView
     private lateinit var tvCast: TextView
     private lateinit var tvReleaseDate: TextView
     private lateinit var tvDuration: TextView
@@ -46,12 +47,14 @@ class DetailActivity : AppCompatActivity() {
         tvDuration = findViewById(R.id.tv_duration)
         image = findViewById(R.id.detail_movie_img)
         imgBackground = findViewById(R.id.detail_movie_cover)
+        tvGenre = findViewById(R.id.tv_genre)
 
         if (detailDrama != null){
             tvJudul.text = detailDrama.judul
             tvRating.text = detailDrama.rating.toString()
             tvType.text = detailDrama.filmType
             tvSinopsis.text = detailDrama.sinopsis
+            tvGenre.text = detailDrama.genre
             tvCast.text = detailDrama.actor
             tvReleaseDate.text = detailDrama.tanggalTerbit
             tvDuration.text = detailDrama.duration.toString()
@@ -62,6 +65,7 @@ class DetailActivity : AppCompatActivity() {
             tvRating.text = detailFilm.rating.toString()
             tvType.text = detailFilm.filmType
             tvSinopsis.text = detailFilm.sinopsis
+            tvGenre.text = detailFilm.genre
             tvCast.text = detailFilm.actor
             tvReleaseDate.text = detailFilm.tanggalTerbit
             tvDuration.text = detailFilm.duration.toString()

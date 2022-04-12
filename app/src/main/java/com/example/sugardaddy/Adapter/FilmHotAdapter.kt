@@ -21,7 +21,7 @@ class FilmHotAdapter(private val context: Context, private val listFilm: ArrayLi
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val listFilmHot = listFilm[position]
-        val (id, judul, rating, tanggalTerbit, actor, sinopsis, filmType, releaseType, duration, image, imgBackground) = listFilm[position]
+        val (id, judul, rating, tanggalTerbit, actor, sinopsis, genre, filmType, releaseType, duration, image, imgBackground) = listFilm[position]
         Picasso.get().load(image).into(holder.imgPhoto)
         holder.tvName.text = judul
         holder.tvDescription.text = sinopsis

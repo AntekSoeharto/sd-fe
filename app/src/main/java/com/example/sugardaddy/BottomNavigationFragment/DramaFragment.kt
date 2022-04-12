@@ -80,12 +80,13 @@ class DramaFragment : Fragment(){
                         val tanggalTerbit = jsonObject.getString("TanggalTerbit")
                         val actor = jsonObject.getString("Actor")
                         val sinopsis = jsonObject.getString("Sinopsis")
+                        val genre = jsonObject.getString("Genre")
                         val filmType = jsonObject.getString("FilmType")
                         val releaseType = jsonObject.getString("ReleaseType")
                         val duration = jsonObject.getInt("Duration")
                         val image = jsonObject.getString("Image")
                         val imgBackground = jsonObject.getString("ImageBackground")
-                        val drama = Film(id, judul, rating, tanggalTerbit, actor, sinopsis, filmType, releaseType, duration, image, imgBackground)
+                        val drama = Film(id, judul, rating, tanggalTerbit, actor, sinopsis, genre, filmType, releaseType, duration, image, imgBackground)
                         listDramaHottest.add(drama)
 
                     }
@@ -138,12 +139,13 @@ class DramaFragment : Fragment(){
                         val tanggalTerbit = jsonObject.getString("TanggalTerbit")
                         val actor = jsonObject.getString("Actor")
                         val sinopsis = jsonObject.getString("Sinopsis")
+                        val genre = jsonObject.getString("Genre")
                         val filmType = jsonObject.getString("FilmType")
                         val releaseType = jsonObject.getString("ReleaseType")
                         val duration = jsonObject.getInt("Duration")
                         val image = jsonObject.getString("Image")
                         val imgBackground = jsonObject.getString("ImageBackground")
-                        val drama = Film(id, judul, rating, tanggalTerbit, actor, sinopsis, filmType, releaseType, duration, image, imgBackground)
+                        val drama = Film(id, judul, rating, tanggalTerbit, actor, sinopsis, genre, filmType, releaseType, duration, image, imgBackground)
                         listDramaRecommendation.add(drama)
 
                     }
