@@ -1,17 +1,23 @@
 package com.example.sugardaddy
 
 import android.content.ContentValues
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sugardaddy.Adapter.CommentsAdapter
 import com.example.sugardaddy.Entity.Comments
 import com.example.sugardaddy.Entity.Film
+import com.example.sugardaddy.Helper.MappingHelper
 import com.example.sugardaddy.db.DatabaseContract
 import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.ACTOR
 import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.DURATION
@@ -24,10 +30,15 @@ import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.RATING
 import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.RELEASE_TYPE
 import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.SINOPSIS
 import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.TANGGAL_TERBIT
+import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.TEMP_ID
 import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion._ID
 import com.example.sugardaddy.db.FilmHelper
+import com.example.sugardaddy.db.UserHelper
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class DetailActivity : AppCompatActivity() {
 
@@ -62,24 +73,15 @@ class DetailActivity : AppCompatActivity() {
         filmHelper = FilmHelper.getInstance(applicationContext)
         filmHelper.open()
 
+
+
+
         btnAddList = findViewById(R.id.fab_addList)
         btnAddList.setOnClickListener {
             if(detailDrama != null){
-                val values = ContentValues()
-                values.put(_ID, detailDrama.ID)
-                values.put(JUDUL, detailDrama.ID)
-                values.put(RATING, detailDrama.ID)
-                values.put(TANGGAL_TERBIT, detailDrama.ID)
-                values.put(ACTOR, detailDrama.ID)
-                values.put(SINOPSIS, detailDrama.ID)
-                values.put(GENRE, detailDrama.ID)
-                values.put(FILM_TYPE, detailDrama.ID)
-                values.put(RELEASE_TYPE, detailDrama.ID)
-                values.put(DURATION, detailDrama.ID)
-                values.put(IMAGE, detailDrama.ID)
-                values.put(IMG_BACKGRUOND, detailDrama.ID)
-
-                val status = filmHelper.insert(values)
+                addToList(detailDrama)
+            }else if(detailFilm != null){
+                addToList(detailFilm)
             }
         }
 
@@ -95,6 +97,7 @@ class DetailActivity : AppCompatActivity() {
         tvGenre = findViewById(R.id.tv_genre)
 
         if (detailDrama != null){
+            Log.e("ID ", "${detailDrama.ID}")
             tvJudul.text = detailDrama.judul
             tvRating.text = detailDrama.rating.toString()
             tvType.text = detailDrama.filmType
@@ -141,6 +144,68 @@ class DetailActivity : AppCompatActivity() {
         rvComments.layoutManager = LinearLayoutManager(this)
         val CommentsAdapter = CommentsAdapter(list)
         rvComments.adapter = CommentsAdapter
+    }
+
+    private fun getAllFilm(): ArrayList<Film>{
+        var listFilm: ArrayList<Film> = ArrayList()
+        val filmHelper = FilmHelper.getInstance(applicationContext)
+        filmHelper.open()
+        val cursor = filmHelper.queryAll()
+        listFilm = MappingHelper.mapFilmCursorToArrayList(cursor)
+        filmHelper.close()
+        Log.e("List  ", "${listFilm.size}")
+        return listFilm
+    }
+
+    private fun addToList(film: Film){
+        var listFilm: ArrayList<Film> = getAllFilm()
+
+        Log.e("Size List ", "${listFilm.size}")
+
+        val values = ContentValues()
+        values.put(TEMP_ID, film.ID)
+        values.put(JUDUL, film.judul)
+        values.put(RATING, film.rating)
+        values.put(TANGGAL_TERBIT, film.tanggalTerbit)
+        values.put(ACTOR, film.actor)
+        values.put(SINOPSIS, film.sinopsis)
+        values.put(GENRE, film.genre)
+        values.put(FILM_TYPE, film.filmType)
+        values.put(RELEASE_TYPE, film.releaseType)
+        values.put(DURATION, film.duration)
+        values.put(IMAGE, film.image)
+        values.put(IMG_BACKGRUOND, film.imgBackground)
+
+//        if(listFilmMyList.size == 0){
+//            val status = filmHelper.insert(values)
+//            if(status > -1){
+//                Toast.makeText(this@DetailActivity, "Film/Drama Added to  List", Toast.LENGTH_SHORT).show()
+//            }else{
+//                Toast.makeText(this@DetailActivity, "Film/Drama Already Exist in Your List", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+        if( listFilm.size == 0){
+            val status = filmHelper.insert(values)
+            if(status > -1){
+                Toast.makeText(this@DetailActivity, "Film/Drama Added to  List", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this@DetailActivity, "Failed Added Film/Drama to List", Toast.LENGTH_SHORT).show()
+            }
+        }
+        for (i in 0 until listFilm.size){
+            if(listFilm.get(i).ID == film.ID){
+                Log.e("ID ", "${listFilm.get(i).ID}")
+                Log.e("ID ", "${film.ID}")
+                Toast.makeText(this@DetailActivity, "Film/Drama Already Exist in Your List", Toast.LENGTH_SHORT).show()
+            }else{
+                val status = filmHelper.insert(values)
+                if(status > -1){
+                    Toast.makeText(this@DetailActivity, "Film/Drama Added to  List", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(this@DetailActivity, "Failed Added Film/Drama to List", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 }
 

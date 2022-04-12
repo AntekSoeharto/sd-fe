@@ -19,6 +19,7 @@ class DatabaseContract {
         companion object {
             const val TABLE_NAME_FILM = "film"
             const val _ID = "_id"
+            const val TEMP_ID = "temp_id"
             const val JUDUL = "judul"
             const val RATING = "rating"
             const val TANGGAL_TERBIT = "tanggal_terbit"

@@ -28,7 +28,7 @@ object MappingHelper {
         val filmList = ArrayList<Film>()
         filmCursor?.apply {
             while (moveToNext()) {
-                val id = getInt(getColumnIndexOrThrow(DatabaseContract.FilmColumn._ID))
+                val id = getInt(getColumnIndexOrThrow(DatabaseContract.FilmColumn.TEMP_ID))
                 val judul = getString(getColumnIndexOrThrow(DatabaseContract.FilmColumn.JUDUL))
                 val rating = getDouble(getColumnIndexOrThrow(DatabaseContract.FilmColumn.RATING))
                 val tanggalTerbit = getString(getColumnIndexOrThrow(DatabaseContract.FilmColumn.TANGGAL_TERBIT))

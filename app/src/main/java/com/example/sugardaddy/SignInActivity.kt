@@ -148,14 +148,11 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
                     val status = userHelper.insert(values)
 
                     if(status > -1){
-                        Toast.makeText(this@SignInActivity, "User Addad", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@SignInActivity, "Login Success", Toast.LENGTH_SHORT).show()
                     }else{
-                        Toast.makeText(this@SignInActivity, "User Failed Addad", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@SignInActivity, "Login Failed", Toast.LENGTH_SHORT).show()
                     }
                     Log.e("Error", "${user.gender}")
-
-
-
 
                 } catch (e: Exception){
                     Log.e("Error", "$e")

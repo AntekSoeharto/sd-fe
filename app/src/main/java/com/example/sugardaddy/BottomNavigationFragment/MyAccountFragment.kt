@@ -74,7 +74,7 @@ class MyAccountFragment : Fragment(), View.OnClickListener {
             }
             val deferredNotes = async(Dispatchers.IO) {
                 val cursor = noteHelper?.queryAll()
-                MappingHelper.mapCursorToArrayList(cursor)
+                MappingHelper.mapUserCursorToArrayList(cursor)
             }
             val users = deferredNotes.await()
             for (i in 0 until users.size){

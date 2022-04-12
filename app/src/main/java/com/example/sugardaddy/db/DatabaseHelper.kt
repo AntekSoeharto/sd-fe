@@ -22,7 +22,8 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
                 " ${DatabaseContract.UserColumn.PASSWORD} TEXT)"
 
         private const val SQL_CREATE_TABLE_FILM = "CREATE TABLE $TABLE_NAME_FILM" +
-                " (${DatabaseContract.FilmColumn._ID} INTEGER PRIMARY KEY," +
+                " (${DatabaseContract.FilmColumn._ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
+                " ${DatabaseContract.FilmColumn.TEMP_ID} INTEGER," +
                 " ${DatabaseContract.FilmColumn.JUDUL} TEXT," +
                 " ${DatabaseContract.FilmColumn.RATING} DOUBLE," +
                 " ${DatabaseContract.FilmColumn.TANGGAL_TERBIT} TEXT," +

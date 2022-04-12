@@ -74,7 +74,7 @@ class DramaFragment : Fragment(){
                     for (i in 0 until listDrama.length()) {
 
                         val jsonObject = listDrama.getJSONObject(i)
-                        val id = jsonObject.getInt("Rating")
+                        val id = jsonObject.getInt("ID")
                         val judul = jsonObject.getString("Judul")
                         val rating = jsonObject.getDouble("Rating")
                         val tanggalTerbit = jsonObject.getString("TanggalTerbit")
@@ -133,7 +133,7 @@ class DramaFragment : Fragment(){
                     for (i in 0 until listDrama.length()) {
 
                         val jsonObject = listDrama.getJSONObject(i)
-                        val id = jsonObject.getInt("Rating")
+                        val id = jsonObject.getInt("ID")
                         val judul = jsonObject.getString("Judul")
                         val rating = jsonObject.getDouble("Rating")
                         val tanggalTerbit = jsonObject.getString("TanggalTerbit")
