@@ -41,6 +41,7 @@
     <string name="logout">Log Out</string>
     <string name="email">Email</string>
     <string name="simple_text">simple text</string>
+    <string name="comments_username">Username</string>
 
     <string name="username_comments">Username</string>
     <string name="comment">Comments</string>

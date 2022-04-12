@@ -186,12 +186,16 @@ class FilmFragment : Fragment() {
 //        }
 //
     private fun showRecyclerList() {
-        rvRecommendedFilms.layoutManager = LinearLayoutManager(activity)
         val FilmRecommendedAdapter = activity?.let { FilmRecommendedAdapter(it, listFilmRecommendation) }
         rvRecommendedFilms.adapter = FilmRecommendedAdapter
+        rvRecommendedFilms.layoutManager = LinearLayoutManager(activity)
 
-        rvHottestFilms.layoutManager= LinearLayoutManager(activity)
+
         val FilmHotAdapter = activity?.let { FilmHotAdapter(it, listFilmRHottest) }
         rvHottestFilms.adapter = FilmHotAdapter
+        rvHottestFilms.layoutManager= LinearLayoutManager(activity)
+
+
+
     }
 }
