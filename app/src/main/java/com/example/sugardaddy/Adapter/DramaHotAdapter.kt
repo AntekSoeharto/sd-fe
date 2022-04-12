@@ -21,8 +21,6 @@ class DramaHotAdapter(private val context: Context, private val listDrama: Array
         return ListViewHolder(view)
     }
 
-
-
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val listDramaHot = listDrama[position]
         val (id, judul, rating, tanggalTerbit, actor, sinopsis, genre, filmType, releaseType, duration, image, imgBackground) = listDrama[position]
