@@ -35,30 +35,30 @@ class FilmHelper(context: Context) {
 
     fun queryAll(): Cursor {
         return database.query(
-            FilmHelper.DATABASE_TABLE_FILM,
+            DATABASE_TABLE_FILM,
             null,
             null,
             null,
             null,
             null,
-            "${DatabaseContract.UserColumn._ID} ASC",
+            "${DatabaseContract.FilmColumn._ID} ASC",
             null)
     }
 
     fun queryById(id: String): Cursor {
-        return database.query(FilmHelper.DATABASE_TABLE_FILM, null, "${DatabaseContract.UserColumn._ID} = ?", arrayOf(id), null, null, null, null)
+        return database.query(DATABASE_TABLE_FILM, null, "${DatabaseContract.FilmColumn._ID} = ?", arrayOf(id), null, null, null, null)
     }
 
     fun insert(values: ContentValues?): Long {
-        return database.insert(FilmHelper.DATABASE_TABLE_FILM, null, values)
+        return database.insert(DATABASE_TABLE_FILM, null, values)
     }
 
     fun update(id: String, values: ContentValues?): Int {
-        return database.update(FilmHelper.DATABASE_TABLE_FILM, values, "${DatabaseContract.UserColumn._ID} = ?", arrayOf(id))
+        return database.update(DATABASE_TABLE_FILM, values, "${DatabaseContract.FilmColumn._ID} = ?", arrayOf(id))
     }
 
     fun deleteById(id: String): Int {
-        return database.delete(FilmHelper.DATABASE_TABLE_FILM, "${DatabaseContract.UserColumn._ID} = '$id'", null)
+        return database.delete(DATABASE_TABLE_FILM, "${DatabaseContract.FilmColumn.TEMP_ID} = '$id'", null)
     }
 
     fun clearAllhelp(){

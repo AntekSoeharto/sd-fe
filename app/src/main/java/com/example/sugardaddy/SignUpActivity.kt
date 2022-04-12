@@ -11,6 +11,7 @@ import android.widget.Toast
 class SignUpActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var name: EditText
     private lateinit var userName: EditText
+
     private lateinit var password: EditText
     private lateinit var confirmPassowrd: EditText
 
@@ -31,14 +32,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when(v.id){
             R.id.btn_signup ->{
-                if(name.text.toString() != "Valentinus" && password.text.toString() == confirmPassowrd.text.toString()){
-                    Toast.makeText(applicationContext, "SignUp Berhasil", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, SignInActivity::class.java)
-                    startActivity(intent)
-                }else{
-                    var text = "Sign Up Gagal, username mungkin sudah digunakan atau confirm password salah"
-                    Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT).show()
-                }
+
             }
         }
     }

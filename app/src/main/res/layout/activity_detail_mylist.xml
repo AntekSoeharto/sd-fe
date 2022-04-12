@@ -91,7 +91,7 @@
             app:layout_constraintTop_toBottomOf="@+id/detail_movie_img" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_add"
+            android:id="@+id/fab_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:foregroundGravity="bottom"
