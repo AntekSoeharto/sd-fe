@@ -184,14 +184,7 @@ class DetailActivity : AppCompatActivity() {
 //                Toast.makeText(this@DetailActivity, "Film/Drama Already Exist in Your List", Toast.LENGTH_SHORT).show()
 //            }
 //        }
-        if( listFilm.size == 0){
-            val status = filmHelper.insert(values)
-            if(status > -1){
-                Toast.makeText(this@DetailActivity, "Film/Drama Added to  List", Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(this@DetailActivity, "Failed Added Film/Drama to List", Toast.LENGTH_SHORT).show()
-            }
-        }
+
         var isExist = false
         for (i in 0 until listFilm.size){
             if(listFilm.get(i).ID == film.ID) {

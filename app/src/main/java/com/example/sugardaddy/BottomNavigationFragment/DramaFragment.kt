@@ -50,10 +50,11 @@ class DramaFragment : Fragment(){
 //        listDramaRecommendation.addAll(listDramas)
 //        listDramaHottest.addAll(listDramas)
 
-        getDramaRecommendation()
-        getDramaHottest()
+
 
         showRecyclerList()
+        getDramaRecommendation()
+        getDramaHottest()
     }
 
     private fun getDramaHottest() {
@@ -89,7 +90,9 @@ class DramaFragment : Fragment(){
                         val drama = Film(id, judul, rating, tanggalTerbit, actor, sinopsis, genre, filmType, releaseType, duration, image, imgBackground)
                         listDramaHottest.add(drama)
 
+
                     }
+                    rvHottestDramas.adapter?.notifyDataSetChanged()
 
                 } catch (e: Exception){
                     Toast.makeText(activity, e.message, Toast.LENGTH_SHORT).show()
@@ -149,6 +152,7 @@ class DramaFragment : Fragment(){
                         listDramaRecommendation.add(drama)
 
                     }
+                    rvRecommendedDramas.adapter?.notifyDataSetChanged()
 
                 } catch (e: Exception){
                     Toast.makeText(activity, e.message, Toast.LENGTH_SHORT).show()
@@ -191,6 +195,7 @@ class DramaFragment : Fragment(){
         rvRecommendedDramas.layoutManager = LinearLayoutManager(activity)
         val DramaRecommendedAdapter = activity?.let { DramaRecommendedAdapter(it, listDramaRecommendation) }
         rvRecommendedDramas.adapter = DramaRecommendedAdapter
+//        rvRecommendedDramas.adapter?.notifyDataSetChanged()
 
         rvHottestDramas.layoutManager=LinearLayoutManager(activity)
         val DramaHotAdapter = activity?.let { DramaHotAdapter(it, listDramaHottest) }

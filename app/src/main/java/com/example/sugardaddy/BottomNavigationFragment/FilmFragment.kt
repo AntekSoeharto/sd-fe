@@ -48,11 +48,12 @@ class FilmFragment : Fragment() {
         listFilmRecommendation.clear()
         listFilmRHottest.clear()
 
-        getFilmecommendation()
-        getFilmHottest()
+
 
 //        list.addAll(listFilms)
         showRecyclerList()
+        getFilmecommendation()
+        getFilmHottest()
     }
 
     private fun getFilmHottest() {
@@ -90,6 +91,7 @@ class FilmFragment : Fragment() {
                         listFilmRHottest.add(film)
 
                     }
+                    rvHottestFilms.adapter?.notifyDataSetChanged()
 
                 } catch (e: Exception){
                     Toast.makeText(activity, e.message, Toast.LENGTH_SHORT).show()
@@ -147,9 +149,8 @@ class FilmFragment : Fragment() {
                         val imgBackground = jsonObject.getString("ImageBackground")
                         val film = Film(id, judul, rating, tanggalTerbit, actor, sinopsis, genre, filmType, releaseType, duration, image, imgBackground)
                         listFilmRecommendation.add(film)
-
-
                     }
+                    rvRecommendedFilms.adapter?.notifyDataSetChanged()
 
                 } catch (e: Exception){
                     Toast.makeText(activity, e.message, Toast.LENGTH_SHORT).show()

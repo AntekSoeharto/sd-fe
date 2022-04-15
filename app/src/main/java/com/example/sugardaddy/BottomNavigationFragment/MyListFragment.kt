@@ -51,6 +51,7 @@ class MyListFragment : Fragment() {
         }
         Log.e("List  ", "${listFilm.size}")
         return listFilm
+        rvMyList.adapter?.notifyDataSetChanged()
     }
 
 
