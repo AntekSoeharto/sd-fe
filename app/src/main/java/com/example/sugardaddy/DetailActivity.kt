@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sugardaddy.Adapter.CommentsAdapter
 import com.example.sugardaddy.Entity.Comments
 import com.example.sugardaddy.Entity.Film
+import com.example.sugardaddy.Entity.User
 import com.example.sugardaddy.Helper.MappingHelper
 import com.example.sugardaddy.db.DatabaseContract
 import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion.ACTOR
@@ -35,10 +36,16 @@ import com.example.sugardaddy.db.DatabaseContract.FilmColumn.Companion._ID
 import com.example.sugardaddy.db.FilmHelper
 import com.example.sugardaddy.db.UserHelper
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.loopj.android.http.AsyncHttpClient
+import com.loopj.android.http.AsyncHttpResponseHandler
 import com.squareup.picasso.Picasso
+import cz.msebera.android.httpclient.Header
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import org.json.JSONObject
+import java.lang.Exception
+import kotlin.properties.Delegates
 
 class DetailActivity : AppCompatActivity() {
 
@@ -53,9 +60,10 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var image: ImageView
     private lateinit var imgBackground: ImageView
     private lateinit var filmHelper: FilmHelper
+    private var id by Delegates.notNull<Int>()
 
     private lateinit var rvComments: RecyclerView
-    private val list = ArrayList<Comments>()
+    private val listComment = ArrayList<Comments>()
 
     private lateinit var btnAddList: View
 
@@ -98,6 +106,7 @@ class DetailActivity : AppCompatActivity() {
 
         if (detailDrama != null){
             Log.e("ID ", "${detailDrama.ID}")
+            id = detailDrama.ID
             tvJudul.text = detailDrama.judul
             tvRating.text = detailDrama.rating.toString()
             tvType.text = detailDrama.filmType
@@ -110,6 +119,7 @@ class DetailActivity : AppCompatActivity() {
             Picasso.get().load(detailDrama.imgBackground).into(imgBackground)
 
         }else if (detailFilm != null){
+            id = detailFilm.ID
             tvJudul.text = detailFilm.judul
             tvRating.text = detailFilm.rating.toString()
             tvType.text = detailFilm.filmType
@@ -124,25 +134,16 @@ class DetailActivity : AppCompatActivity() {
 
         rvComments = findViewById(R.id.rv_comments)
         rvComments.setHasFixedSize(true)
+        getComment()
 
-        list.addAll(listComments)
+//        list.addAll()
         showRecyclerList()
     }
 
-    private val listComments: ArrayList<Comments>
-        get() {
-            val dataUsername = resources.getStringArray(R.array.array_username_comments)
-            val dataComments = resources.getStringArray(R.array.array_comments)
-            val listComments = ArrayList<Comments>()
-            for (i in dataUsername.indices) {
-                val comments = Comments(dataUsername[i],dataComments[i])
-                listComments.add(comments)
-            }
-            return listComments
-        }
+
     private fun showRecyclerList() {
         rvComments.layoutManager = LinearLayoutManager(this)
-        val CommentsAdapter = CommentsAdapter(list)
+        val CommentsAdapter = CommentsAdapter(listComment)
         rvComments.adapter = CommentsAdapter
     }
 
@@ -155,6 +156,60 @@ class DetailActivity : AppCompatActivity() {
         filmHelper.close()
         Log.e("List  ", "${listFilm.size}")
         return listFilm
+    }
+
+    private fun getComment() {
+        val client = AsyncHttpClient()
+
+        val url = "http://10.0.2.2:9090/comment?film_id=" + id.toString()
+//        Log.e("DeBug", "$url")
+        client.get(url, object : AsyncHttpResponseHandler(){
+            override fun onSuccess(
+                statusCode: Int,
+                headers: Array<out Header>,
+                responseBody: ByteArray
+            ) {
+                val result = String(responseBody)
+
+                try {
+                    val responseObject = JSONObject(result)
+                    val listFilm = responseObject.getJSONArray("data")
+
+                    for (i in 0 until listFilm.length()) {
+
+
+                        val jsonObject = listFilm.getJSONObject(i)
+                        val commentId = jsonObject.getInt("ID")
+                        val username = jsonObject.getString("Username")
+                        val email = jsonObject.getString("Email")
+                        val comment = jsonObject.getString("Comment")
+                        val commentClass = Comments(commentId, username, email, comment)
+                        listComment.add(commentClass)
+                    }
+                    rvComments.adapter?.notifyDataSetChanged()
+
+                } catch (e: Exception){
+                    Log.e("Error", "$e")
+                    e.printStackTrace()
+                }
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<out Header>,
+                responseBody: ByteArray,
+                error: Throwable?
+            ) {
+                val errorMessage = when (statusCode) {
+                    401 -> "$statusCode : Bad Request"
+                    403 -> "$statusCode : Forbidden"
+                    404 -> "$statusCode : Not Found"
+                    else -> "$statusCode : ${error?.message}"
+                }
+                Log.e("Error", "$statusCode")
+            }
+
+        })
     }
 
     private fun addToList(film: Film){

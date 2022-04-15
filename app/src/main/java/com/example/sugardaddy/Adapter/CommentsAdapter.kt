@@ -16,9 +16,9 @@ class CommentsAdapter (private val listComments: ArrayList<Comments> ): Recycler
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (username, comments) = listComments[position]
+        val (temp, username, email, comment) = listComments[position]
         holder.tvUsername.text = username
-        holder.tvComments.text = comments
+        holder.tvComments.text = comment
     }
 
     override fun getItemCount(): Int = listComments.size
