@@ -23,7 +23,7 @@ class BottomNavigation : AppCompatActivity() {
 
     private lateinit var binding: ActivityBottomNavigationBinding
     private lateinit var buttonNavView : BottomNavigationView
-//    private lateinit var searchView: SearchView
+    private lateinit var searchView: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,13 +34,17 @@ class BottomNavigation : AppCompatActivity() {
 
         buttonNavView = binding.bottomNavigation
 //        searchView = binding.searchView
-//
+//        searchView.setAdap
+
+
 //        val listDramaFilm = arrayOf("Batman","DOTS","Spider-Man","Naruto","Doraemon","Power Ranger","Kamen Rider","Avengers End-Game")
-//
+
 //        val listAdapter : ArrayAdapter<String> = ArrayAdapter(
 //            this,android.R.layout.simple_list_item_1,listDramaFilm
 //        )
-//
+
+//        binding.dramaFilmList.adapter = listAdapter;
+
 //        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
 //            override fun onQueryTextSubmit(query: String?): Boolean {
 //                binding.searchView.clearFocus()
@@ -65,18 +69,22 @@ class BottomNavigation : AppCompatActivity() {
                 R.id.ic_drama -> {
                     currentFragment(dramaFragment)
                     binding.searchView.visibility = View.VISIBLE
+//                    binding.dramaFilmList.visibility = View.GONE
                 }
                 R.id.ic_film -> {
                     currentFragment(filmFragment)
                     binding.searchView.visibility = View.VISIBLE
+//                    binding.dramaFilmList.visibility = View.GONE
                 }
                 R.id.ic_my_list -> {
                     currentFragment(myListFragment)
                     binding.searchView.visibility = View.GONE
+//                    binding.dramaFilmList.visibility = View.GONE
                 }
                 R.id.ic_my_account -> {
                     currentFragment(myAccountFragment)
                     binding.searchView.visibility = View.GONE
+//                    binding.dramaFilmList.visibility = View.GONE
                 }
             }
             true

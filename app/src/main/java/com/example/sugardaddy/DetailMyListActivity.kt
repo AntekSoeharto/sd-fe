@@ -2,14 +2,21 @@ package com.example.sugardaddy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sugardaddy.Adapter.CommentsAdapter
 import com.example.sugardaddy.Entity.Comments
 import com.example.sugardaddy.Entity.Film
+import com.example.sugardaddy.db.FilmHelper
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.squareup.picasso.Picasso
+import java.time.temporal.Temporal
+import kotlin.properties.Delegates
 
 class DetailMyListActivity : AppCompatActivity() {
 
@@ -22,9 +29,10 @@ class DetailMyListActivity : AppCompatActivity() {
     private lateinit var tvDuration: TextView
     private lateinit var image: ImageView
     private lateinit var imgBackground: ImageView
+    private lateinit var btnDelete: View
+    private lateinit var filmHeler: FilmHelper
+    private lateinit var film: Film
 
-    private lateinit var rvComments: RecyclerView
-    private val list = ArrayList<Comments>()
 
     companion object{
         const val INTENT_PARCELABLE = "OBJECT_INTERN"
@@ -34,8 +42,11 @@ class DetailMyListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_mylist)
 
-        val detailFilm = intent.getParcelableExtra<Film>(INTENT_PARCELABLE)
-        val detailDrama = intent.getParcelableExtra<Film>(INTENT_PARCELABLE)
+        film = intent.getParcelableExtra<Film>(INTENT_PARCELABLE)!!
+        filmHeler = FilmHelper(this)
+        filmHeler = FilmHelper.getInstance(applicationContext)
+
+
 
         tvJudul = findViewById(R.id.detail_movie_title)
         tvRating = findViewById(R.id.rate)
@@ -46,34 +57,35 @@ class DetailMyListActivity : AppCompatActivity() {
         tvDuration = findViewById(R.id.tv_duration)
         image = findViewById(R.id.detail_movie_img)
         imgBackground = findViewById(R.id.detail_movie_cover)
-
-        if (detailDrama != null){
-            tvJudul.text = detailDrama.judul
-            tvRating.text = detailDrama.rating.toString()
-            tvType.text = detailDrama.filmType
-            tvSinopsis.text = detailDrama.sinopsis
-            tvCast.text = detailDrama.actor
-            tvReleaseDate.text = detailDrama.tanggalTerbit
-            tvDuration.text = detailDrama.duration.toString()
-            Picasso.get().load(detailDrama.image).into(image)
-            Picasso.get().load(detailDrama.imgBackground).into(imgBackground)
-        }else if (detailFilm != null){
-            tvJudul.text = detailFilm.judul
-            tvRating.text = detailFilm.rating.toString()
-            tvType.text = detailFilm.filmType
-            tvSinopsis.text = detailFilm.sinopsis
-            tvCast.text = detailFilm.actor
-            tvReleaseDate.text = detailFilm.tanggalTerbit
-            tvDuration.text = detailFilm.duration.toString()
-            Picasso.get().load(detailFilm.image).into(image)
-            Picasso.get().load(detailFilm.imgBackground).into(imgBackground)
+        btnDelete = findViewById(R.id.fab_delete)
+        btnDelete.setOnClickListener{
+            deleteList()
         }
-        showRecyclerList()
+
+        if(film != null){
+            Log.e("id ", "${film.ID}")
+            tvJudul.text = film.judul
+            tvRating.text = film.rating.toString()
+            tvType.text = film.filmType
+            tvSinopsis.text = film.sinopsis
+            tvCast.text = film.actor
+            tvReleaseDate.text = film.tanggalTerbit
+            tvDuration.text = film.duration.toString()
+            Picasso.get().load(film.image).into(image)
+            Picasso.get().load(film.imgBackground).into(imgBackground)
+        }
+
     }
 
-    private fun showRecyclerList() {
-        rvComments.layoutManager = LinearLayoutManager(this)
-        val CommentsAdapter = CommentsAdapter(list)
-        rvComments.adapter = CommentsAdapter
+    private fun deleteList(){
+        filmHeler.open()
+        val status = filmHeler.deleteById(film.ID.toString()).toLong()
+        if(status > 0){
+            Toast.makeText(this@DetailMyListActivity, "Film/Drama Removed From List", Toast.LENGTH_SHORT).show()
+            onBackPressed()
+        }else{
+            Toast.makeText(this@DetailMyListActivity, "Film/Drama Failed Removed From List", Toast.LENGTH_SHORT).show()
+        }
+        filmHeler.close()
     }
 }

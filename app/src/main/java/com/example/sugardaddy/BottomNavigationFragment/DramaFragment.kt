@@ -50,10 +50,11 @@ class DramaFragment : Fragment(){
 //        listDramaRecommendation.addAll(listDramas)
 //        listDramaHottest.addAll(listDramas)
 
-        getDramaRecommendation()
-        getDramaHottest()
+
 
         showRecyclerList()
+        getDramaRecommendation()
+        getDramaHottest()
     }
 
     private fun getDramaHottest() {
@@ -74,21 +75,24 @@ class DramaFragment : Fragment(){
                     for (i in 0 until listDrama.length()) {
 
                         val jsonObject = listDrama.getJSONObject(i)
-                        val id = jsonObject.getInt("Rating")
+                        val id = jsonObject.getInt("ID")
                         val judul = jsonObject.getString("Judul")
                         val rating = jsonObject.getDouble("Rating")
                         val tanggalTerbit = jsonObject.getString("TanggalTerbit")
                         val actor = jsonObject.getString("Actor")
                         val sinopsis = jsonObject.getString("Sinopsis")
+                        val genre = jsonObject.getString("Genre")
                         val filmType = jsonObject.getString("FilmType")
                         val releaseType = jsonObject.getString("ReleaseType")
                         val duration = jsonObject.getInt("Duration")
                         val image = jsonObject.getString("Image")
                         val imgBackground = jsonObject.getString("ImageBackground")
-                        val drama = Film(id, judul, rating, tanggalTerbit, actor, sinopsis, filmType, releaseType, duration, image, imgBackground)
+                        val drama = Film(id, judul, rating, tanggalTerbit, actor, sinopsis, genre, filmType, releaseType, duration, image, imgBackground)
                         listDramaHottest.add(drama)
 
+
                     }
+                    rvHottestDramas.adapter?.notifyDataSetChanged()
 
                 } catch (e: Exception){
                     Toast.makeText(activity, e.message, Toast.LENGTH_SHORT).show()
@@ -132,21 +136,23 @@ class DramaFragment : Fragment(){
                     for (i in 0 until listDrama.length()) {
 
                         val jsonObject = listDrama.getJSONObject(i)
-                        val id = jsonObject.getInt("Rating")
+                        val id = jsonObject.getInt("ID")
                         val judul = jsonObject.getString("Judul")
                         val rating = jsonObject.getDouble("Rating")
                         val tanggalTerbit = jsonObject.getString("TanggalTerbit")
                         val actor = jsonObject.getString("Actor")
                         val sinopsis = jsonObject.getString("Sinopsis")
+                        val genre = jsonObject.getString("Genre")
                         val filmType = jsonObject.getString("FilmType")
                         val releaseType = jsonObject.getString("ReleaseType")
                         val duration = jsonObject.getInt("Duration")
                         val image = jsonObject.getString("Image")
                         val imgBackground = jsonObject.getString("ImageBackground")
-                        val drama = Film(id, judul, rating, tanggalTerbit, actor, sinopsis, filmType, releaseType, duration, image, imgBackground)
+                        val drama = Film(id, judul, rating, tanggalTerbit, actor, sinopsis, genre, filmType, releaseType, duration, image, imgBackground)
                         listDramaRecommendation.add(drama)
 
                     }
+                    rvRecommendedDramas.adapter?.notifyDataSetChanged()
 
                 } catch (e: Exception){
                     Toast.makeText(activity, e.message, Toast.LENGTH_SHORT).show()
@@ -189,6 +195,7 @@ class DramaFragment : Fragment(){
         rvRecommendedDramas.layoutManager = LinearLayoutManager(activity)
         val DramaRecommendedAdapter = activity?.let { DramaRecommendedAdapter(it, listDramaRecommendation) }
         rvRecommendedDramas.adapter = DramaRecommendedAdapter
+//        rvRecommendedDramas.adapter?.notifyDataSetChanged()
 
         rvHottestDramas.layoutManager=LinearLayoutManager(activity)
         val DramaHotAdapter = activity?.let { DramaHotAdapter(it, listDramaHottest) }
