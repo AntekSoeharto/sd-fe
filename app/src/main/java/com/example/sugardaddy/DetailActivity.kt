@@ -7,15 +7,13 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sugardaddy.Adapter.CommentsAdapter
 import com.example.sugardaddy.Entity.Comments
+import com.example.sugardaddy.Helper.UserSingleton
 import com.example.sugardaddy.Entity.Film
 import com.example.sugardaddy.Entity.User
 import com.example.sugardaddy.Helper.MappingHelper
@@ -38,6 +36,7 @@ import com.example.sugardaddy.db.UserHelper
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
+import com.loopj.android.http.RequestParams
 import com.squareup.picasso.Picasso
 import cz.msebera.android.httpclient.Header
 import kotlinx.coroutines.Dispatchers
@@ -45,9 +44,10 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.lang.Exception
+import java.net.URLEncoder
 import kotlin.properties.Delegates
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var tvJudul: TextView
     private lateinit var tvRating: TextView
@@ -61,6 +61,8 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var imgBackground: ImageView
     private lateinit var filmHelper: FilmHelper
     private var id by Delegates.notNull<Int>()
+    private lateinit var btnSend: Button
+    private lateinit var etComments: EditText
 
     private lateinit var rvComments: RecyclerView
     private val listComment = ArrayList<Comments>()
@@ -103,6 +105,10 @@ class DetailActivity : AppCompatActivity() {
         image = findViewById(R.id.detail_movie_img)
         imgBackground = findViewById(R.id.detail_movie_cover)
         tvGenre = findViewById(R.id.tv_genre)
+        btnSend = findViewById(R.id.btn_send)
+        etComments = findViewById(R.id.et_comments)
+
+        btnSend.setOnClickListener(this)
 
         if (detailDrama != null){
             Log.e("ID ", "${detailDrama.ID}")
@@ -159,6 +165,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun getComment() {
+        listComment.clear()
         val client = AsyncHttpClient()
 
         val url = "http://10.0.2.2:9090/comment?film_id=" + id.toString()
@@ -176,8 +183,6 @@ class DetailActivity : AppCompatActivity() {
                     val listFilm = responseObject.getJSONArray("data")
 
                     for (i in 0 until listFilm.length()) {
-
-
                         val jsonObject = listFilm.getJSONObject(i)
                         val commentId = jsonObject.getInt("ID")
                         val username = jsonObject.getString("Username")
@@ -255,6 +260,73 @@ class DetailActivity : AppCompatActivity() {
             }
         }else{
             Toast.makeText(this@DetailActivity, "Film/Drama Already Exist in Your List", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun postComment(commentTemp: String){
+        val client = AsyncHttpClient()
+        val parameter = RequestParams()
+        parameter.put("user_id", UserSingleton.getUserid())
+        parameter.put("film_id", id)
+        parameter.put("comment", commentTemp)
+//        var param: String = "user_id=" + UserSingleton.getUserid() + "&film_id=" + id + "&comment=" + commentTemp
+        Log.e("User Id by Detail ", "${UserSingleton.getUserid()}")
+        val url = "http://10.0.2.2:9090/comment"
+//        val urlFix = URLEncoder.encode(url, "UTF-8")
+        Log.e("param ", "$url")
+        client.post(url, parameter, object : AsyncHttpResponseHandler(){
+            override fun onSuccess(
+                statusCode: Int,
+                headers: Array<out Header>,
+                responseBody: ByteArray
+            ) {
+                val result = String(responseBody)
+
+                try {
+                    val responseObject = JSONObject(result)
+                    val status = responseObject.getInt("status")
+                    Log.e("status ", "$status")
+
+                    if (status == 200){
+                        Toast.makeText(this@DetailActivity, "Success Add Comment", Toast.LENGTH_SHORT)
+                        etComments.text.clear()
+                        getComment()
+
+                    }else{
+                        Toast.makeText(this@DetailActivity, "Failed Add Comment", Toast.LENGTH_SHORT)
+                    }
+
+                } catch (e: Exception){
+                    Toast.makeText(this@DetailActivity, e.message, Toast.LENGTH_SHORT).show()
+                    e.printStackTrace()
+                }
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<out Header>,
+                responseBody: ByteArray,
+                error: Throwable?
+            ) {
+                val errorMessage = when (statusCode) {
+                    401 -> "$statusCode : Bad Request"
+                    403 -> "$statusCode : Forbidden"
+                    404 -> "$statusCode : Not Found"
+                    else -> "$statusCode : ${error?.message}"
+                }
+//                Toast.makeText(activity, errorMessage, Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    override fun onClick(v: View) {
+        when(v.id){
+            R.id.btn_send -> {
+                var commentTemp: String = etComments.text.toString()
+                Log.e("Comment ", "$commentTemp")
+                postComment(commentTemp)
+            }
         }
     }
 }

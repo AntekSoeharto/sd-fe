@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.sugardaddy.Entity.User
+import com.example.sugardaddy.Helper.UserSingleton
 import com.example.sugardaddy.db.DatabaseContract.UserColumn.Companion.BIRTH_DATE
 import com.example.sugardaddy.db.DatabaseContract.UserColumn.Companion.EMAIL
 import com.example.sugardaddy.db.DatabaseContract.UserColumn.Companion.GENDER
@@ -141,6 +142,8 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
                     values.put(GENDER, dataUser.getString("Gender"))
                     values.put(BIRTH_DATE, dataUser.getString("BirthDay"))
                     values.put(PASSWORD, password.text.toString())
+                    val userTemp = User(dataUser.getInt("ID"), dataUser.getString("Name"), dataUser.getString("Username"), dataUser.getString("Email"), dataUser.getString("Gender"), dataUser.getString("BirthDay"), password.text.toString())
+                    UserSingleton.user = userTemp
 
 
                     val status = userHelper.insert(values)

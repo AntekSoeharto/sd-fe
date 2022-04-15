@@ -19,6 +19,7 @@ import com.example.sugardaddy.Entity.User
 import com.example.sugardaddy.Helper.MappingHelper
 import com.example.sugardaddy.R
 import com.example.sugardaddy.SignInActivity
+import com.example.sugardaddy.Helper.UserSingleton
 import com.example.sugardaddy.db.DatabaseContract
 import com.example.sugardaddy.db.DatabaseContract.UserColumn.Companion.PASSWORD
 import com.example.sugardaddy.db.FilmHelper
@@ -85,6 +86,7 @@ class MyAccountFragment : Fragment(), View.OnClickListener {
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 userHelper.clearAllUserhelp()
                 filmHelper.clearAllFilmhelp()
+                UserSingleton.user = User()
                 startActivity(intent)
             }
             R.id.btn_save ->{
