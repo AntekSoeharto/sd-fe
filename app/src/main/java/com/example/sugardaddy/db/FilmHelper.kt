@@ -61,7 +61,7 @@ class FilmHelper(context: Context) {
         return database.delete(DATABASE_TABLE_FILM, "${DatabaseContract.FilmColumn.TEMP_ID} = '$id'", null)
     }
 
-    fun clearAllhelp(){
-        dataBaseHelper.clearAll()
+    fun clearAllFilmhelp(){
+        dataBaseHelper.clearAllMyList()
     }
 }

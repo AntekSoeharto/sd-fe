@@ -61,7 +61,7 @@ class UserHelper(context: Context) {
         return database.delete(DATABASE_TABLE_USER, "$_ID = '$id'", null)
     }
 
-    fun clearAllhelp(){
-        dataBaseHelper.clearAll()
+    fun clearAllUserhelp(){
+        dataBaseHelper.clearAllUser()
     }
 }

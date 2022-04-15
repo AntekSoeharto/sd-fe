@@ -48,9 +48,14 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
         onCreate(db)
     }
 
-    fun clearAll(){
+    fun clearAllUser(){
         val db = this.writableDatabase
         db.execSQL("DELETE FROM "+ TABLE_NAME_USER);
+    }
+
+    fun clearAllMyList(){
+        val db = this.writableDatabase
+        db.execSQL("DELETE FROM "+ TABLE_NAME_FILM);
     }
 
 }
