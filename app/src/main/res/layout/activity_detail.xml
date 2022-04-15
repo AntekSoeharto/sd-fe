@@ -74,7 +74,6 @@
             app:layout_constraintStart_toEndOf="@+id/detail_movie_img"
             app:layout_constraintTop_toBottomOf="@+id/detail_movie_title" />
 
-
         <TextView
             android:lineSpacingExtra="8dp"
             android:textColor="@color/text_light_blue"
@@ -296,6 +295,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_text_rating" />
 
+        <EditText
+            android:id="@+id/et_comments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            android:ems="10"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_duration"
+            android:inputType="text"
+            android:background="@color/white"
+            android:hint="@string/add_comments"/>
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="@string/send"
+            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:layout_margin="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_comments"/>
+
         <TextView
             android:lineSpacingExtra="8dp"
             android:textColor="@color/text_light_blue"
@@ -310,7 +336,7 @@
             android:text="Comments"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_duration" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_send" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_comments"
