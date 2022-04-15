@@ -50,6 +50,8 @@
     <string name="detail">Detail</string>
     <string name="linkin_park">Linkin Park</string>
     <string name="tempactor">TempActor</string>
+    <string name="add_comments">masukkan comment</string>
+    <string name="send">SEND</string>
 
     <string-array name="array_username_comments">
         <item>Ahmad</item>
