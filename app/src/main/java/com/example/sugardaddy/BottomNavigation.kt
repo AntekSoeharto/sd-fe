@@ -49,7 +49,6 @@ class BottomNavigation : AppCompatActivity(), SearchView.OnQueryTextListener {
         this.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 searchFilm.clear()
-
             }
         })
 
