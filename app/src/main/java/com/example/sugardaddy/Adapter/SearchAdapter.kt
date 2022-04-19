@@ -15,15 +15,15 @@ import com.example.sugardaddy.R
 import com.example.sugardaddy.SignInActivity
 import com.squareup.picasso.Picasso
 
-class SearchAdapter(private val context: Context, private val listDrama: ArrayList<Film>) : RecyclerView.Adapter<SearchAdapter.ListViewHolder>(){
+class SearchAdapter(private val context: Context, private val listFilm: ArrayList<Film>) : RecyclerView.Adapter<SearchAdapter.ListViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_drama, parent, false)
         return ListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val listDramaHot = listDrama[position]
-        val (id, judul, rating, tanggalTerbit, actor, sinopsis, filmType, releaseType, duration, image, imgBackground) = listDrama[position]
+        val listDramaHot = listFilm[position]
+        val (id, judul, rating, tanggalTerbit, actor, sinopsis, filmType, releaseType, duration, image, imgBackground) = listFilm[position]
         Picasso.get().load(image).into(holder.imgPhoto)
         holder.tvName.text = judul
         holder.tvDescription.text = sinopsis
@@ -32,11 +32,12 @@ class SearchAdapter(private val context: Context, private val listDrama: ArrayLi
         holder.itemView.setOnClickListener{
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra(DetailActivity.INTENT_PARCELABLE, listDramaHot)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent)
         }
     }
 
-    override fun getItemCount(): Int = listDrama.size
+    override fun getItemCount(): Int = listFilm.size
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)

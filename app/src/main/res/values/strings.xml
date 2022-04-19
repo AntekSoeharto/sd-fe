@@ -52,6 +52,7 @@
     <string name="tempactor">TempActor</string>
     <string name="add_comments">masukkan comment</string>
     <string name="send">SEND</string>
+    <string name="search_result">Search Result</string>
 
     <string-array name="array_username_comments">
         <item>Ahmad</item>
