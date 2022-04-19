@@ -15,10 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sugardaddy.Adapter.CommentsAdapter
 import com.example.sugardaddy.Adapter.SearchAdapter
-import com.example.sugardaddy.BottomNavigationFragment.DramaFragment
-import com.example.sugardaddy.BottomNavigationFragment.FilmFragment
-import com.example.sugardaddy.BottomNavigationFragment.MyAccountFragment
-import com.example.sugardaddy.BottomNavigationFragment.MyListFragment
+import com.example.sugardaddy.BottomNavigationFragment.*
 import com.example.sugardaddy.Entity.Film
 import com.example.sugardaddy.databinding.ActivityBottomNavigationBinding
 import com.example.sugardaddy.databinding.ActivityMainBinding
@@ -38,6 +35,7 @@ class BottomNavigation : AppCompatActivity(), SearchView.OnQueryTextListener {
     private val filmFragment = FilmFragment()
     private val myListFragment = MyListFragment()
     private val myAccountFragment = MyAccountFragment()
+    private val newsFragment = NewsFragment()
 
     private lateinit var binding: ActivityBottomNavigationBinding
     private lateinit var buttonNavView : BottomNavigationView
@@ -81,6 +79,11 @@ class BottomNavigation : AppCompatActivity(), SearchView.OnQueryTextListener {
                 }
                 R.id.ic_my_account -> {
                     currentFragment(myAccountFragment)
+                    binding.svSearch.visibility = View.GONE
+//                    binding.dramaFilmList.visibility = View.GONE
+                }
+                R.id.ic_news -> {
+                    currentFragment(newsFragment)
                     binding.svSearch.visibility = View.GONE
 //                    binding.dramaFilmList.visibility = View.GONE
                 }
