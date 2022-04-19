@@ -22,7 +22,7 @@ class SearchAdapter(private val context: Context, private val listFilm: ArrayLis
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val listDramaHot = listFilm[position]
+        val film = listFilm[position]
         val (id, judul, rating, tanggalTerbit, actor, sinopsis, filmType, releaseType, duration, image, imgBackground) = listFilm[position]
         Picasso.get().load(image).into(holder.imgPhoto)
         holder.tvName.text = judul
@@ -31,7 +31,7 @@ class SearchAdapter(private val context: Context, private val listFilm: ArrayLis
 
         holder.itemView.setOnClickListener{
             val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra(DetailActivity.INTENT_PARCELABLE, listDramaHot)
+            intent.putExtra(DetailActivity.INTENT_PARCELABLE, film)
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent)
         }

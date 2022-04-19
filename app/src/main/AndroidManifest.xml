@@ -13,6 +13,9 @@
         android:theme="@style/Theme.SugarDaddy"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".NewsDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".SearchActivity"
             android:exported="false" />
         <activity

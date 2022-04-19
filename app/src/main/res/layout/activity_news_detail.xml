@@ -22,9 +22,10 @@
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:id="@+id/iv_news"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/gradient_bg"
             app:layout_constraintBottom_toBottomOf="@+id/detail_movie_cover"
             app:layout_constraintEnd_toEndOf="@+id/detail_movie_cover"
@@ -129,12 +130,12 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:lineSpacingExtra="8dp"
-            android:text="Description"
+            android:text="News"
             android:textColor="@color/text_light_blue"
             android:textSize="17dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintHorizontal_bias="0.459"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_detail_country" />
 
@@ -207,18 +208,18 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_detail_published_date" />
 
         <TextView
-            android:lineSpacingExtra="8dp"
-            android:textColor="@color/text_light_blue"
             android:id="@+id/tv_detail_link"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
+            android:lineSpacingExtra="8dp"
             android:text="@string/link"
+            android:autoLink="web"
+            android:textColor="@color/text_light_blue"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title_link" />
 
