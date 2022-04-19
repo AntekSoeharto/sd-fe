@@ -10,6 +10,7 @@
     <string name="drama">Drama</string>
     <string name="film">Film</string>
     <string name="my_list">My List</string>
+    <string name="news_title">Sugar Daddy News</string>
     <string name="my_account">My Account</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="confirm_password">Confirm Password</string>
@@ -54,6 +55,13 @@
     <string name="send">SEND</string>
     <string name="search_result">Search Result</string>
     <string name="news">News</string>
+    <string name="author">Author</string>
+    <string name="publishedDate">2022-12-02</string>
+    <string name="link">https://abc.com</string>
+    <string name="link_title">Link</string>
+    <string name="title_rank">Rank</string>
+    <string name="rank">1</string>
+    <string name="title_country">Country</string>
 
     <string-array name="array_username_comments">
         <item>Ahmad</item>
@@ -78,4 +86,40 @@
         <item>so sexy</item>
         <item>nice</item>
     </string-array>
+
+    <string-array name="array_news_title">
+        <item>Ahmad</item>
+        <item>Dani</item>
+        <item>Andreas</item>
+        <item>Jumaga</item>
+        <item>Jul</item>
+        <item>Azare</item>
+        <item>Soedirman</item>
+        <item>Soekarno</item>
+        <item>Soepomo</item>
+    </string-array>
+
+    <string-array name="array_news_author">
+        <item>good</item>
+        <item>good</item>
+        <item>nice</item>
+        <item>fantastic</item>
+        <item>fantastic</item>
+        <item>good</item>
+        <item>good</item>
+        <item>so sexy</item>
+        <item>nice</item>
+    </string-array>
+
+    <integer-array name="data_photo_news">
+        <item>@drawable/themartian</item>
+        <item>@drawable/themartian</item>
+        <item>@drawable/themartian</item>
+        <item>@drawable/themartian</item>
+        <item>@drawable/themartian</item>
+        <item>@drawable/themartian</item>
+        <item>@drawable/themartian</item>
+        <item>@drawable/themartian</item>
+        <item>@drawable/themartian</item>
+    </integer-array>
 </resources>
