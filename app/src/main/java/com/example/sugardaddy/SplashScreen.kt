@@ -9,6 +9,8 @@ import androidx.lifecycle.lifecycleScope
 import com.example.sugardaddy.Entity.User
 import com.example.sugardaddy.Helper.MappingHelper
 import com.example.sugardaddy.db.UserHelper
+import com.example.sugardaddy.Helper.UserSingleton
+
 import com.google.android.material.internal.ContextUtils.getActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -45,6 +47,9 @@ class SplashScreen : AppCompatActivity() {
                 MappingHelper.mapUserCursorToArrayList(cursor)
             }
             val users = deferredNotes.await()
+            val user = User(users[0].id, users[0].nama, users[0].username, users[0].email, users[0].gender, users[0].birthDay, users[0].password)
+            UserSingleton.user = user
+            Log.e("User id ", "${UserSingleton.user.id}")
             if (users.size > 0) {
                 Handler().postDelayed({
                     val intent = Intent(this@SplashScreen, BottomNavigation::class.java)

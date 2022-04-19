@@ -1,66 +1,62 @@
 package com.example.sugardaddy
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.view.View.VISIBLE
 import android.widget.ArrayAdapter
 import android.widget.SearchView
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import com.example.sugardaddy.BottomNavigationFragment.DramaFragment
-import com.example.sugardaddy.BottomNavigationFragment.FilmFragment
-import com.example.sugardaddy.BottomNavigationFragment.MyAccountFragment
-import com.example.sugardaddy.BottomNavigationFragment.MyListFragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.sugardaddy.Adapter.CommentsAdapter
+import com.example.sugardaddy.Adapter.SearchAdapter
+import com.example.sugardaddy.BottomNavigationFragment.*
+import com.example.sugardaddy.Entity.Film
 import com.example.sugardaddy.databinding.ActivityBottomNavigationBinding
 import com.example.sugardaddy.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.loopj.android.http.AsyncHttpClient
+import com.loopj.android.http.AsyncHttpResponseHandler
+import com.loopj.android.http.RequestParams
+import cz.msebera.android.httpclient.Header
+import org.json.JSONObject
+import java.lang.Exception
+import java.util.*
+import kotlin.collections.ArrayList
 
-class BottomNavigation : AppCompatActivity() {
+class BottomNavigation : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private val dramaFragment = DramaFragment()
     private val filmFragment = FilmFragment()
     private val myListFragment = MyListFragment()
     private val myAccountFragment = MyAccountFragment()
+    private val newsFragment = NewsFragment()
 
     private lateinit var binding: ActivityBottomNavigationBinding
     private lateinit var buttonNavView : BottomNavigationView
-    private lateinit var searchView: SearchView
+    private val searchFilm =  ArrayList<Film>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        searchFilm.clear()
         binding = ActivityBottomNavigationBinding.inflate(layoutInflater)
+
+        this.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                searchFilm.clear()
+
+            }
+        })
 
         setContentView(binding.root)
         currentFragment(dramaFragment)
 
         buttonNavView = binding.bottomNavigation
-//        searchView = binding.searchView
-//        searchView.setAdap
-
-
-//        val listDramaFilm = arrayOf("Batman","DOTS","Spider-Man","Naruto","Doraemon","Power Ranger","Kamen Rider","Avengers End-Game")
-
-//        val listAdapter : ArrayAdapter<String> = ArrayAdapter(
-//            this,android.R.layout.simple_list_item_1,listDramaFilm
-//        )
-
-//        binding.dramaFilmList.adapter = listAdapter;
-
-//        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                binding.searchView.clearFocus()
-//                if (listDramaFilm.contains(query)){
-//
-//                    listAdapter.filter.filter(query)
-//
-//                }
-//                return false
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                listAdapter.filter.filter(newText)
-//                return false
-//            }
-//        })
 
         supportActionBar?.hide()
 
@@ -68,27 +64,33 @@ class BottomNavigation : AppCompatActivity() {
             when (it.itemId) {
                 R.id.ic_drama -> {
                     currentFragment(dramaFragment)
-                    binding.searchView.visibility = View.VISIBLE
+                    binding.svSearch.visibility = View.VISIBLE
 //                    binding.dramaFilmList.visibility = View.GONE
                 }
                 R.id.ic_film -> {
                     currentFragment(filmFragment)
-                    binding.searchView.visibility = View.VISIBLE
+                    binding.svSearch.visibility = View.VISIBLE
 //                    binding.dramaFilmList.visibility = View.GONE
                 }
                 R.id.ic_my_list -> {
                     currentFragment(myListFragment)
-                    binding.searchView.visibility = View.GONE
+                    binding.svSearch.visibility = View.GONE
 //                    binding.dramaFilmList.visibility = View.GONE
                 }
                 R.id.ic_my_account -> {
                     currentFragment(myAccountFragment)
-                    binding.searchView.visibility = View.GONE
+                    binding.svSearch.visibility = View.GONE
+//                    binding.dramaFilmList.visibility = View.GONE
+                }
+                R.id.ic_news -> {
+                    currentFragment(newsFragment)
+                    binding.svSearch.visibility = View.GONE
 //                    binding.dramaFilmList.visibility = View.GONE
                 }
             }
             true
         }
+        binding.svSearch.setOnQueryTextListener(this)
     }
 
     private fun currentFragment(fragment: Fragment) {
@@ -97,4 +99,84 @@ class BottomNavigation : AppCompatActivity() {
             commit()
         }
     }
+
+    fun getAllFilm(query: String){
+//        Log.e("search ", "Masuk Sini")
+//        Log.e("search ", "$text")
+        val client = AsyncHttpClient()
+//        val params = RequestParams()
+//        params.put("search", query)
+        val params = "search=" + query
+        val url = "http://10.0.2.2:9090/search?" + params
+        client.get(url, object : AsyncHttpResponseHandler(){
+            override fun onSuccess(
+                statusCode: Int,
+                headers: Array<out Header>,
+                responseBody: ByteArray
+            ) {
+                val result = String(responseBody)
+
+                try {
+                    val responseObject = JSONObject(result)
+                    val arrayFilm = responseObject.getJSONArray("data")
+                    Log.e("List array Object", "${arrayFilm.length()}")
+
+                    for (i in 0 until arrayFilm.length()) {
+
+                        val jsonObject = arrayFilm.getJSONObject(i)
+                        val id = jsonObject.getInt("ID")
+                        val judul = jsonObject.getString("Judul")
+                        val rating = jsonObject.getDouble("Rating")
+                        val tanggalTerbit = jsonObject.getString("TanggalTerbit")
+                        val actor = jsonObject.getString("Actor")
+                        val sinopsis = jsonObject.getString("Sinopsis")
+                        val genre = jsonObject.getString("Genre")
+                        val filmType = jsonObject.getString("FilmType")
+                        val releaseType = jsonObject.getString("ReleaseType")
+                        val duration = jsonObject.getInt("Duration")
+                        val image = jsonObject.getString("Image")
+                        val imgBackground = jsonObject.getString("ImageBackground")
+                        val film = Film(id, judul, rating, tanggalTerbit, actor, sinopsis, genre, filmType, releaseType, duration, image, imgBackground)
+                        searchFilm.add(film)
+                        Log.e("List Film", "${searchFilm.size}")
+                    }
+                    val intent = Intent(this@BottomNavigation, SearchActivity::class.java)
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra("listFilm", searchFilm)
+                    startActivity(intent)
+
+                } catch (e: Exception){
+                    Toast.makeText(this@BottomNavigation, e.message, Toast.LENGTH_SHORT).show()
+                    e.printStackTrace()
+                }
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<out Header>,
+                responseBody: ByteArray,
+                error: Throwable?
+            ) {
+                val errorMessage = when (statusCode) {
+                    401 -> "$statusCode : Bad Request"
+                    403 -> "$statusCode : Forbidden"
+                    404 -> "$statusCode : Not Found"
+                    else -> "$statusCode : ${error?.message}"
+                }
+                Toast.makeText(this@BottomNavigation, errorMessage, Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    override fun onQueryTextSubmit(query: String): Boolean {
+        getAllFilm(query)
+        return false
+    }
+
+    override fun onQueryTextChange(query: String): Boolean {
+        return false
+    }
+
+
 }

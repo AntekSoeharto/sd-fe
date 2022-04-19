@@ -19,8 +19,10 @@ import com.example.sugardaddy.Entity.User
 import com.example.sugardaddy.Helper.MappingHelper
 import com.example.sugardaddy.R
 import com.example.sugardaddy.SignInActivity
+import com.example.sugardaddy.Helper.UserSingleton
 import com.example.sugardaddy.db.DatabaseContract
 import com.example.sugardaddy.db.DatabaseContract.UserColumn.Companion.PASSWORD
+import com.example.sugardaddy.db.FilmHelper
 import com.example.sugardaddy.db.UserHelper
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
@@ -42,6 +44,7 @@ class MyAccountFragment : Fragment(), View.OnClickListener {
     private lateinit var tvGender: TextView
     private lateinit var tvBirthDate: TextView
     private lateinit var userHelper: UserHelper
+    private lateinit var filmHelper: FilmHelper
     private lateinit var btnSave: Button
     private lateinit var edtNewPassword: EditText
     private lateinit var edtConfirmPassword: EditText
@@ -68,6 +71,7 @@ class MyAccountFragment : Fragment(), View.OnClickListener {
         edtNewPassword = view.findViewById(R.id.newPassword)
         edtConfirmPassword = view.findViewById(R.id.confirmPassword)
         activity?.let { UserHelper(it.applicationContext).also { userHelper = it } }
+        activity?.let { FilmHelper(it.applicationContext).also { filmHelper = it } }
 
         btnLogOut.setOnClickListener(this)
         btnSave.setOnClickListener(this)
@@ -80,7 +84,9 @@ class MyAccountFragment : Fragment(), View.OnClickListener {
             R.id.btn_logout -> {
                 val intent = Intent(activity, SignInActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                userHelper.clearAllhelp()
+                userHelper.clearAllUserhelp()
+                filmHelper.clearAllFilmhelp()
+                UserSingleton.user = User()
                 startActivity(intent)
             }
             R.id.btn_save ->{

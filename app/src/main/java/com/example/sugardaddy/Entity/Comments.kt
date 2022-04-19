@@ -5,9 +5,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Comments(
-//    var id: Int = 0,
+    var id: Int,
     var username:String,
-    var comments:String,
+    var email : String,
+    var comment:String,
 ):Parcelable
 
 

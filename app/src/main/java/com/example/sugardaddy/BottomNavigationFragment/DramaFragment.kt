@@ -118,6 +118,8 @@ class DramaFragment : Fragment(){
         })
     }
 
+
+
     private fun getDramaRecommendation() {
         val client = AsyncHttpClient()
         val url = "http://10.0.2.2:9090/film?film_type=Drama&film_display=1"

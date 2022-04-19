@@ -8,7 +8,7 @@
     tools:context=".BottomNavigation">
 
     <SearchView
-        android:id="@+id/searchView"
+        android:id="@+id/sv_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:queryHint="Enter the title"
@@ -23,18 +23,6 @@
         app:layout_constraintRight_toRightOf="parent"
         />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/searchView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -48,11 +36,13 @@
         app:itemTextColor="@color/blue"/>
 
     <FrameLayout
+        android:id="@+id/fragment_cntainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="10dp"
-        android:id="@+id/fragment_cntainer"
-        app:layout_constraintTop_toBottomOf="@id/rv_search"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"/>
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintTop_toBottomOf="@id/sv_search"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="19dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
