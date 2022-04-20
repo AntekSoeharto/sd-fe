@@ -198,8 +198,5 @@ class FilmFragment : Fragment() {
         val FilmHotAdapter = activity?.let { FilmHotAdapter(it, listFilmRHottest) }
         rvHottestFilms.adapter = FilmHotAdapter
         rvHottestFilms.layoutManager= LinearLayoutManager(activity)
-
-
-
     }
 }

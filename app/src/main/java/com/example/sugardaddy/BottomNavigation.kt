@@ -46,12 +46,6 @@ class BottomNavigation : AppCompatActivity(), SearchView.OnQueryTextListener {
         searchFilm.clear()
         binding = ActivityBottomNavigationBinding.inflate(layoutInflater)
 
-        this.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                searchFilm.clear()
-            }
-        })
-
         setContentView(binding.root)
         currentFragment(dramaFragment)
 
@@ -90,6 +84,7 @@ class BottomNavigation : AppCompatActivity(), SearchView.OnQueryTextListener {
             true
         }
         binding.svSearch.setOnQueryTextListener(this)
+
     }
 
     private fun currentFragment(fragment: Fragment) {
@@ -116,6 +111,7 @@ class BottomNavigation : AppCompatActivity(), SearchView.OnQueryTextListener {
                 val result = String(responseBody)
 
                 try {
+                    searchFilm.clear()
                     val responseObject = JSONObject(result)
                     val arrayFilm = responseObject.getJSONArray("data")
                     Log.e("List array Object", "${arrayFilm.length()}")
@@ -137,8 +133,10 @@ class BottomNavigation : AppCompatActivity(), SearchView.OnQueryTextListener {
                         val imgBackground = jsonObject.getString("ImageBackground")
                         val film = Film(id, judul, rating, tanggalTerbit, actor, sinopsis, genre, filmType, releaseType, duration, image, imgBackground)
                         searchFilm.add(film)
+                        Log.e("image ", "$image")
                         Log.e("List Film", "${searchFilm.size}")
                     }
+
                     val intent = Intent(this@BottomNavigation, SearchActivity::class.java)
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("listFilm", searchFilm)
