@@ -67,7 +67,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
     private fun verifyAccount() {
         val client = AsyncHttpClient()
         var param: String = "email=" + email.text.toString() + "&password=" + password.text.toString()
-        val url = "http://10.0.2.2:9090/login?" + param
+        val url = "https://sd-heroku.herokuapp.com/login?" + param
         client.get(url, object : AsyncHttpResponseHandler(){
             override fun onSuccess(
                 statusCode: Int,
@@ -118,7 +118,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
         val client = AsyncHttpClient()
 
         var param: String = "email=" + email.text.toString()
-        val url = "http://10.0.2.2:9090/user?" + param
+        val url = "https://sd-heroku.herokuapp.com/user?" + param
 //        Log.e("DeBug", "$url")
         client.get(url, object : AsyncHttpResponseHandler(){
             override fun onSuccess(

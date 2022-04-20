@@ -75,7 +75,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         var param = "nama="+edtName.text.toString()+"&username="+edtUserName.text.toString()+"&email="+edtEmail.text.toString()
         param += "&gender="+edtGender.text.toString()+"&birthday="+edtBirthDay.text.toString()+"&password="+edtPassword.text.toString()
 
-        val url = "http://10.0.2.2:9090/signup?"+param
+        val url = "https://sd-heroku.herokuapp.com/signup?"+param
         client.post(url, object : AsyncHttpResponseHandler(){
             override fun onSuccess(
                 statusCode: Int,
