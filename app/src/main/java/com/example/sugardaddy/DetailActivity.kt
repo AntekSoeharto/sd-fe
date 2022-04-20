@@ -168,7 +168,7 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         listComment.clear()
         val client = AsyncHttpClient()
 
-        val url = "http://10.0.2.2:9090/comment?film_id=" + id.toString()
+        val url = "https://sd-heroku.herokuapp.com/comment?film_id=" + id.toString()
 //        Log.e("DeBug", "$url")
         client.get(url, object : AsyncHttpResponseHandler(){
             override fun onSuccess(
@@ -271,7 +271,7 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         parameter.put("comment", commentTemp)
 //        var param: String = "user_id=" + UserSingleton.getUserid() + "&film_id=" + id + "&comment=" + commentTemp
         Log.e("User Id by Detail ", "${UserSingleton.getUserid()}")
-        val url = "http://10.0.2.2:9090/comment"
+        val url = "https://sd-heroku.herokuapp.com/comment"
 //        val urlFix = URLEncoder.encode(url, "UTF-8")
         Log.e("param ", "$url")
         client.post(url, parameter, object : AsyncHttpResponseHandler(){

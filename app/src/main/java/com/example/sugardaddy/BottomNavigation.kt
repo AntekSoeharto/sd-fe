@@ -101,7 +101,7 @@ class BottomNavigation : AppCompatActivity(), SearchView.OnQueryTextListener {
 //        val params = RequestParams()
 //        params.put("search", query)
         val params = "search=" + query
-        val url = "http://10.0.2.2:9090/search?" + params
+        val url = "https://sd-heroku.herokuapp.com/search?" + params
         client.get(url, object : AsyncHttpResponseHandler(){
             override fun onSuccess(
                 statusCode: Int,

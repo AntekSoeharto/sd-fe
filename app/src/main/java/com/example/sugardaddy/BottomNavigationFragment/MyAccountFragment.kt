@@ -114,7 +114,7 @@ class MyAccountFragment : Fragment(), View.OnClickListener {
         val client = AsyncHttpClient()
 
         val param = "email="+tvEmail.text.toString()+"&password="+edtNewPassword.text.toString()
-        val url = "http://10.0.2.2:9090/user?" + param
+        val url = "https://sd-heroku.herokuapp.com/user?" + param
 //        Log.e("DeBug", "$url")
         client.put(url, object : AsyncHttpResponseHandler(){
             override fun onSuccess(
