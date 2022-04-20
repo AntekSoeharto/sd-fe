@@ -2,6 +2,7 @@ package com.example.sugardaddy.Adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,8 +23,8 @@ class SearchAdapter(private val context: Context, private val listFilm: ArrayLis
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val listDramaHot = listFilm[position]
-        val (id, judul, rating, tanggalTerbit, actor, sinopsis, filmType, releaseType, duration, image, imgBackground) = listFilm[position]
+        val film = listFilm[position]
+        val (id, judul, rating, tanggalTerbit, actor, sinopsis, genre, filmType, releaseType, duration, image, imgBackground) = listFilm[position]
         Picasso.get().load(image).into(holder.imgPhoto)
         holder.tvName.text = judul
         holder.tvDescription.text = sinopsis
@@ -31,8 +32,9 @@ class SearchAdapter(private val context: Context, private val listFilm: ArrayLis
 
         holder.itemView.setOnClickListener{
             val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra(DetailActivity.INTENT_PARCELABLE, listDramaHot)
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra(DetailActivity.INTENT_PARCELABLE, film)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            Log.e("Print ", "$image")
             context.startActivity(intent)
         }
     }

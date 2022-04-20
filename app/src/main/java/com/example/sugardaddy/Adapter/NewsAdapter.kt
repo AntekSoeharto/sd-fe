@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sugardaddy.DetailActivity
 import com.example.sugardaddy.Entity.Film
 import com.example.sugardaddy.Entity.News
+import com.example.sugardaddy.NewsDetailActivity
 import com.example.sugardaddy.R
 import com.example.sugardaddy.SignInActivity
 import com.squareup.picasso.Picasso
@@ -29,6 +30,11 @@ class NewsAdapter(private val context: Context, private val listNews: ArrayList<
         holder.tvTitle.text = title
         holder.tvAuthor.text = author
 
+        holder.itemView.setOnClickListener{
+            val intent = Intent(context, NewsDetailActivity::class.java)
+            intent.putExtra(NewsDetailActivity.INTENT_PARCELABLE, news)
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = listNews.size

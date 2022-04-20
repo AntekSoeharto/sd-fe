@@ -48,9 +48,10 @@ class SplashScreen : AppCompatActivity() {
             }
             val users = deferredNotes.await()
             var user = User()
-            if (users.size != 0){
-                user = User(users[0].id, users[0].nama, users[0].username, users[0].email, users[0].gender, users[0].birthDay, users[0].password)
+            if(users.size != 0){
+               user = User(users[0].id, users[0].nama, users[0].username, users[0].email, users[0].gender, users[0].birthDay, users[0].password)
             }
+
             UserSingleton.user = user
             Log.e("User id ", "${UserSingleton.user.id}")
             if (users.size > 0) {

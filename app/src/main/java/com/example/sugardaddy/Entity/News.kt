@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 data class News(
     var title: String,
     var author: String,
-    var image: Int,
+    var image: String,
     var description: String,
     var publishedDate: String,
     var link: String,
