@@ -26,6 +26,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var edtPassword: EditText
     private lateinit var edtConfirmPassowrd: EditText
     private lateinit var tvFailedSignOut: TextView
+    private lateinit var btnClose: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +41,11 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         edtPassword = findViewById(R.id.edt_password)
         edtConfirmPassowrd = findViewById(R.id.edt_confirm_password)
         tvFailedSignOut = findViewById(R.id.tv_failed_signup)
+        btnClose = findViewById(R.id.btn_close)
 
         val signUp: Button = findViewById(R.id.btn_signup)
         signUp.setOnClickListener(this)
+        btnClose.setOnClickListener(this)
 
     }
 
@@ -50,6 +53,9 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         when(v.id){
             R.id.btn_signup ->{
                 checkPassword()
+            }
+            R.id.btn_close ->{
+                onBackPressed()
             }
         }
     }

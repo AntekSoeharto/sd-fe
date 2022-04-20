@@ -32,6 +32,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var failedSignIn: TextView
     private lateinit var userHelper: UserHelper
     private lateinit var user: User
+    var backPressedTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +51,20 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
         btnSignIn.setOnClickListener(this)
         val btnSignUp: Button = findViewById(R.id.btn_signup_insignin)
         btnSignUp.setOnClickListener(this)
+        val btnExit: Button = findViewById(R.id.btn_exit)
+        btnExit.setOnClickListener(this)
+
+
+    }
+
+    override fun onBackPressed() {
+        if (backPressedTime + 3000 > System.currentTimeMillis()) {
+            super.onBackPressed()
+            finish()
+        } else {
+            Toast.makeText(this, "Press back again to leave the app.", Toast.LENGTH_LONG).show()
+        }
+        backPressedTime = System.currentTimeMillis()
     }
 
     override fun onClick(v: View) {
@@ -60,6 +75,9 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_signup_insignin->{
                 val intent = Intent(this, SignUpActivity::class.java)
                 startActivity(intent)
+            }
+            R.id.btn_exit ->{
+                finishAndRemoveTask()
             }
         }
     }
