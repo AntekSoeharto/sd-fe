@@ -37,6 +37,7 @@ class NewsDetailActivity : AppCompatActivity() {
         tvPublishedDate = findViewById(R.id.tv_detail_published_date)
         tvLink = findViewById(R.id.tv_detail_link)
         image = findViewById(R.id.iv_news)
+        supportActionBar?.hide()
 
         if(news != null){
             tvTitle.text = news.title

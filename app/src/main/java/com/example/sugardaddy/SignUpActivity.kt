@@ -78,7 +78,19 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 //        params.put("gender", edtGender.text.toString())
 //        params.put("birthday", edtBirthDay.text.toString())
 //        params.put("password", edtPassword.text.toString())
-        var param = "nama="+edtName.text.toString()+"&username="+edtUserName.text.toString()+"&email="+edtEmail.text.toString()
+        val nameTemp = edtName.text.toString()
+        var splitName = nameTemp.split(" ")
+        var name = ""
+        for (i in 0 until splitName.size){
+            if (i == 0){
+                name = name + splitName.get(i)
+            }else{
+                name = name + "_" + splitName.get(i)
+            }
+
+        }
+        Log.e("username ", "$name")
+        var param = "nama="+name+"&username="+edtUserName.text.toString()+"&email="+edtEmail.text.toString()
         param += "&gender="+edtGender.text.toString()+"&birthday="+edtBirthDay.text.toString()+"&password="+edtPassword.text.toString()
 
         val url = "https://sd-heroku.herokuapp.com/signup?"+param
@@ -97,7 +109,6 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                     if (status == 200){
                         val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
                         Toast.makeText(this@SignUpActivity, "SignUp Success, Please Login", Toast.LENGTH_SHORT).show()
-                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
 
                     }else{

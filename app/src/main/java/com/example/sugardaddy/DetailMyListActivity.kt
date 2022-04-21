@@ -45,6 +45,7 @@ class DetailMyListActivity : AppCompatActivity() {
         film = intent.getParcelableExtra<Film>(INTENT_PARCELABLE)!!
         filmHeler = FilmHelper(this)
         filmHeler = FilmHelper.getInstance(applicationContext)
+        supportActionBar?.hide()
 
 
 
