@@ -83,6 +83,8 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         filmHelper = FilmHelper.getInstance(applicationContext)
         filmHelper.open()
 
+        supportActionBar?.hide()
+
 
 
 
